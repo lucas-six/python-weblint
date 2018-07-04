@@ -30,3 +30,4 @@ The Web Code Quality Tool, including both front-end (HTML, CSS, JavaScript) and 
 - E01011. tag name must be in lowercase
 - E01012. attribute name must be in lowercase
 - E01013. "title" element must not be empty
+- E01014. "body" element must not be empty
