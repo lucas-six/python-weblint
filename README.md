@@ -18,7 +18,7 @@ The Web Code Quality Tool, including both front-end (HTML, CSS, JavaScript) and 
 ### HTML
 
 - E01001. DOCTYPE must be decalred first
-- E01002. DOCTYPE for HTML$ should be "&lt;DOCTYPE html&gt;"
+- E01002. DOCTYPE for HTML5 should be "&lt;DOCTYPE html&gt;"
 - E01003. invalid tag
 - E01004. deprecated tag
 - E01005. tag must be paired
