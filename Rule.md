@@ -8,7 +8,7 @@
 
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hans">
   <head>
     <title>文档的标题</title>
   </head>
@@ -24,7 +24,7 @@
 
 ```html
 <!-- <!DOCTYPE html> -->
-<html>
+<html lang="zh-Hans">
   <head>
     <title>文档的标题</title>
   </head>
@@ -42,7 +42,7 @@
 
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hans">
   <head>
     <title>文档的标题</title>
   </head>
@@ -58,7 +58,7 @@
 
 ```html
 <!DOCTYPE html6>
-<html>
+<html lang="zh-Hans">
   <head>
     <title>文档的标题</title>
   </head>
@@ -278,7 +278,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title></title>
+    <title>Page Title</title>
   </head>
   <body>
   </body>
@@ -291,6 +291,34 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  </head>
+  <body>
+  </body>
+</html>
+```
+
+### E01009. required attribute missing (必须包含特定属性)
+
+正确：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+  </body>
+</html>
+```
+
+错误：
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page Title</title>
   </head>
   <body>
   </body>
