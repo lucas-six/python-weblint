@@ -69,3 +69,33 @@
 
 </html>
 ```
+
+### E01003. invalid tag (不可使用非法标签)
+
+正确：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+    <p>AAA</p>
+  </body>
+</html>
+```
+
+错误：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+    <invalidtag>AAA</invalidtag>
+  </body>
+</html>
+```
