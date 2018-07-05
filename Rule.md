@@ -105,7 +105,7 @@
 废弃标签包括
 
 ```html
-<centent>, <font>, <s>, <strike>, <b>, <i>, <tt>, <small>, <frame>, <acronym>, <big>, <u>, <isindex>, <basefont>, <dir>, <applet>, <style>
+<center>, <font>, <s>, <strike>, <b>, <i>, <tt>, <small>, <frame>, <acronym>, <big>, <u>, <isindex>, <basefont>, <dir>, <applet>, <style>
 ```
 
 正确：
@@ -147,7 +147,7 @@
     <title>Page Title</title>
   </head>
   <body>
-    <p>段落</p>
+    <p>段落</p><br>
   </body>
 </html>
 ```
@@ -162,6 +162,34 @@
   </head>
   <body>
     <p>段落
+  </body>
+</html>
+```
+
+### E01006. invalid attribute (不可使用非法属性)
+
+正确：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+  </body>
+</html>
+```
+
+错误：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title invalidattribute="oh">Page Title</title>
+  </head>
+  <body>
   </body>
 </html>
 ```
