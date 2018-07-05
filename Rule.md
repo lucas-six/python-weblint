@@ -470,3 +470,23 @@
 ```html
 <meta charset="utf-8">
 ```
+
+### E01015. (`id`只能是唯一)
+
+正确：
+
+```html
+<body>
+  <p id="index">文档内容</p>
+  <p id="home">文档内容</p>
+</body>
+```
+
+错误：
+
+```html
+<body>
+  <p id="index">文档内容</p>
+  <p id="index">文档内容</p>
+</body>
+```
