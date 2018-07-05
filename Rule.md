@@ -408,3 +408,31 @@
   </body>
 </html>
 ```
+
+### E01013. "title" element must not be empty (title标签不可为空)
+
+正确：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+  </body>
+</html>
+```
+
+错误：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+  </head>
+  <body>
+  </body>
+</html>
+```
