@@ -20,7 +20,7 @@
 </html>
 ```
 
-错误
+错误：
 
 ```html
 <!-- <!DOCTYPE html> -->
@@ -317,6 +317,34 @@
 ```html
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+  </body>
+</html>
+```
+
+### E01010. duplicated attribute (同一标签不可使用重复的属性)
+
+正确：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+  </body>
+</html>
+```
+
+错误：
+
+```html
+<!DOCTYPE html>
+<html lang="en" lang="zh-Hans">
   <head>
     <title>Page Title</title>
   </head>
