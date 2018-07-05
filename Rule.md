@@ -510,3 +510,42 @@
   <h1>标题1</h1>
 </body>
 ```
+
+### E01017. (不能包含特定标签)
+
+- `<aside>`不能包含`<main>`
+- `<nav>`不能包含`<main>`、`<header>`、`<footer>`
+- `<header>`不能包含`<main>`、`<footer>`、`<aside>`
+- `<footer>`不能包含`<main>`、`<header>`、`<aside>`
+
+正确：
+
+```html
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <title>文档标题</title>
+  </head>
+  <body>
+    <aside>侧边栏内容</aside>
+    <main>主体内容</main>
+  </body>
+</html>
+```
+
+错误：
+
+```html
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <title>文档标题</title>
+  </head>
+  <body>
+    <aside>
+      侧边栏内容
+      <main>主体内容</main>
+    </aside>
+  </body>
+</html>
+```
