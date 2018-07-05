@@ -206,7 +206,7 @@
 </html>
 ```
 
-### E01007. deprecared attribute (不能使用废弃的属性)
+### E01007. deprecated attribute (不能使用废弃的属性)
 
 废弃属性包括
 

@@ -25,7 +25,7 @@ The Web Code Quality Tool, including both front-end (HTML, CSS, JavaScript) and 
 - E01004. deprecated tag (不可使用废弃标签)
 - E01005. non-selfclose tag must be paired (双标签必须成对)
 - E01006. invalid attribute (不可使用非法属性)
-- E01007. deprecared attribute (不能使用废弃的属性)
+- E01007. deprecated attribute (不能使用废弃的属性)
 - E01008. required element missing (必须包含特定标签)
 - E01009. required attribute missing (必须包含特定属性)
 - E01010. duplicated attribute (同一标签不可使用重复的属性)
