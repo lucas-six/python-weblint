@@ -193,3 +193,67 @@
   </body>
 </html>
 ```
+
+### E01007. deprecared attribute (不能使用废弃的属性)
+
+废弃属性包括
+
+| 属性 | 所属的元素 |
+| ---- | ---- |
+| manifest | html |
+| xmlns | html,title |
+| align | caption, iframe, img, input, object, legend, table, hr, div, h1, h2, h3, h4, h5, h6, p, col, colgroup, tbody, td, tfoot, th, thead and tr |
+| alink | body |
+| link | body |
+| vlink | body |
+| text | body |
+| background | body |
+| bgcolor | table, tr, td, th and body |
+| border | table and object, img|
+| char | col, colgroup, tbody, td, tfoot, th, thead and tr |
+| charoff | col, colgroup, tbody, td, tfoot, th, thead and tr |
+| compact | dl , ol and ul |
+| frame | table |
+| frameborder | iframe |
+| hspace | img and object |
+| nowrap | td and th|
+| rules | table |
+| type | li, ol and ul |
+| value | li |
+| valign | col, colgroup, tbody, td, tfoot, th, thead and tr |
+| width | hr, table, td, th, col, colgroup and pre |
+| accept | form |
+| vspace | img |
+| charset | a, link |
+| coords | a |
+| name | a |
+| rev | a, link |
+| shape |
+| target | link |
+| height | th, td |
+
+正确：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+  </body>
+</html>
+```
+
+错误：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title style="font-size: 1rem">Page Title</title>
+  </head>
+  <body>
+  </body>
+</html>
+```
