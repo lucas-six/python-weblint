@@ -549,3 +549,31 @@
   </body>
 </html>
 ```
+
+### E01018. (`<main>`不带`hidden`只能出现一次)
+
+正确：
+
+```html
+<body>
+  <main>主体内容</main>
+  <main hidden>主体内容</main>
+</body>
+```
+
+或
+
+```html
+<body>
+  <main>主体内容</main>
+</body>
+```
+
+错误：
+
+```html
+<body>
+  <main>主体内容</main>
+  <main>主体内容</main>
+</body>
+```
