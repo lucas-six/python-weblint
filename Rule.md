@@ -577,3 +577,17 @@
   <main>主体内容</main>
 </body>
 ```
+
+### E01019. (`<script>`不能有`type="text/javascript"`属性)
+
+正确：
+
+```html
+<script src="js/js.js"></script>
+```
+
+错误：
+
+```html
+<script src="js/js.js" type="text/javascript"></script>
+```
