@@ -99,3 +99,39 @@
   </body>
 </html>
 ```
+
+### E01004. deprecated tag (不可使用废弃标签)
+
+废弃标签包括
+
+```html
+<centent>, <font>, <s>, <strike>, <b>, <i>, <tt>, <small>, <frame>, <acronym>, <big>, <u>, <isindex>, <basefont>, <dir>, <applet>, <style>
+```
+
+正确：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+    <p>something</p>
+  </body>
+</html>
+```
+
+错误：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+    <font>something</font>
+  </body>
+</html>
+```
