@@ -591,3 +591,17 @@
 ```html
 <script src="js/js.js" type="text/javascript"></script>
 ```
+
+### E01020. (`<link>`不能有`type="text/css"`属性)
+
+正确：
+
+```html
+<link src="css/style.css" rel="stylesheet">
+```
+
+错误：
+
+```html
+<link src="css/style.css" rel="stylesheet" type="text/css">
+```
