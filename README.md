@@ -23,7 +23,7 @@ The Web Code Quality Tool, including both front-end (HTML, CSS, JavaScript) and 
 - E01002. DOCTYPE for HTML5 should be "&lt;DOCTYPE html&gt;" (HTML5的文档类型必须是"&lt;DOCTYPE html&gt;")
 - E01003. invalid tag (不可使用非法标签)
 - E01004. deprecated tag (不可使用废弃标签)
-- E01005. tag must be paired (标签必须成对)
+- E01005. non-selfclose tag must be paired (双标签必须成对)
 - E01006. invalid attribute (不可使用非法属性)
 - E01007. deprecared attribute (不能使用废弃的属性)
 - E01008. required element missing (必须包含特定标签)
