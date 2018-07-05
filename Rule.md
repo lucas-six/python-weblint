@@ -380,3 +380,31 @@
   </body>
 </html>
 ```
+
+### E01012. attribute name must be in lowercase (属性名必须小写)
+
+正确：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+  </body>
+</html>
+```
+
+错误：
+
+```html
+<!DOCTYPE html>
+<html LANG="en">
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+  </body>
+</html>
+```
