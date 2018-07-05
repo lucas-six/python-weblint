@@ -135,3 +135,33 @@
   </body>
 </html>
 ```
+
+### E01005. non-selfclosed tag must be paired (双标签必须成对)
+
+正确：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+    <p>段落</p>
+  </body>
+</html>
+```
+
+错误：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+    <p>段落
+  </body>
+</html>
+```
