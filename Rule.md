@@ -138,6 +138,18 @@
 
 ### E01005. non-selfclosed tag must be paired (双标签必须成对)
 
+成对标签：
+
+```html
+<html>, <body>, <title>, <p>, <div>, <h1>~<h6>,<abbr>, <address>, <bdi>, <bdo>, <blockquote>, <cite>, <del>, <dfn>, <em>, <ins>, <kbd>, <meter>, <progress>, <rb>, <rtc>, <rp>, <rt>, <ruby>, <time>, <datalist>, <canvas>, <figcaption>, <figure>, <audio>, <source>, <video>, <nav>, <header>, <footer>, <section>, <article>, <aside>, <details>, <dialog>, <pre>, <q>, <samp>, <strong>, <sup>, <sub>, <var>, <form>, <textarea>, <button>, <select>, <option>, <optgroup>, <label>, <fieldset>, <legend>, <frameset>,<noframes>, <map>, <a>, <ul>, <ol>, <li>, <dl>, <dt>, <dd>, <menu>, <menuitem>, <span>, <head>, <script>, <noscript>, <object>, <table>, <th>, <td>, <tr>, <tbody>, <thead>, <tfoot>, <caption>, <col>, <colgroup>, <main>, <picture>, <template>, <data>, <code>
+```
+
+自闭合标签：
+
+```html
+<wbr>, <keygen>, <output>, <track>, <embed>, <input>, <iframe>, <img>, <area>, <link>, <meta>, <base>, <param>
+```
+
 正确：
 
 ```html
@@ -252,6 +264,33 @@
 <html lang="en">
   <head>
     <title style="font-size: 1rem">Page Title</title>
+  </head>
+  <body>
+  </body>
+</html>
+```
+
+### E01008. required element missing (必须包含特定标签)
+
+正确：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+  </head>
+  <body>
+  </body>
+</html>
+```
+
+错误：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
   </head>
   <body>
   </body>
