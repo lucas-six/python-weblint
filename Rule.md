@@ -272,6 +272,15 @@
 
 ### E01008. required element missing (必须包含特定标签)
 
+- `<html>`必须包含`<head>`，`<body>`
+- `<select>`只能且必须包含`<option>`
+- `<ul>`只能且必须包含`<li>`
+- `<ol>`只能且必须包含`<li>`
+- `<dl>`只能且必须包含`<dt>`、`<dd>`
+- `<details>`必须包含`<summary>`
+- `<video>`必须包含属性`controls`和`<source>`，且`<source>`必须包含`src`属性
+- `<audio>`必须包含属性`controls`和`<source>`，且`<source>`必须包含`src`属性
+
 正确：
 
 ```html
@@ -298,6 +307,21 @@
 ```
 
 ### E01009. required attribute missing (必须包含特定属性)
+
+- `<html>`必须包含属性`lang`
+- `<link>`元素必须属性是`src`、`rel`
+- `<a>`必须包含属性`href`
+- `<img>`必须包含属性`src`、`alt`
+- `<input>`必须包含属性`type`
+- `<iframe>`必须包含属性`src`
+- `<embed>`必须包含属性`src`
+- `<video>`必须包含属性`controls`和`<source>`，且`<source>`必须包含`src`属性
+- `<audio>`必须包含属性`controls`和`<source>`，且`<source>`必须包含`src`属性
+- `<input>`的`type`的属性值为`radio`的时候必须包含`name`属性
+- `<input>`的`type`的属性值为`img`的时候必须包含`src`、`alt`属性
+- `<output>`必须包含属性`name`、`for`
+- `<meter>`必须包含属性`value`
+- `<progress>`必须包含属性`value`
 
 正确：
 
@@ -410,6 +434,8 @@
 ```
 
 ### E01013. "title" element must not be empty (title标签不可为空)
+
+- `<p>`内容不能为空
 
 正确：
 
