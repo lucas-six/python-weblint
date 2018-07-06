@@ -94,11 +94,11 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     }
 
     VALID_ATTRS = {
-        'charset',
+        'charset', 'src',
     }
 
     REQUIRED_ATTRS = {
-        'html': ('lang',),
+        'html': (('lang',), 'HS0012'),
     }
 
     NOEMPTY_TAGS = {
@@ -225,10 +225,9 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         # validate required attributes
         rules = REQUIRED_ATTRS.get(tag)
         if rules is not None:
-            for r in rules:
-                #if r not in (a.lower() for a in element.attrs):
-                #    reports.add(Report('E01009', path, lineno, r))
-                pass
+            for r in rules[0]:
+                if r not in (a.lower() for a in element.attrs):
+                    reports.add(Report(rules[1], path, lineno, r))
 
         # parse attributes
         for a in element.attrs:

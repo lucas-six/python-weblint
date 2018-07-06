@@ -238,6 +238,26 @@ Wrong(错误)：
 </html>
 ```
 
+### `HS0012`. `<html>` element must have `lang` attribute (`<html>`元素必须包含`lang`属性)
+
+Right(正确)：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  ...
+</html>
+```
+
+Wrong(错误)：
+
+```html
+<!DOCTYPE html>
+<html>
+  ...
+</html>
+```
+
 ### E01008. required element missing (必须包含特定标签)
 
 - `<html>`必须包含`<head>`，`<body>`
@@ -276,7 +296,6 @@ Wrong(错误)：
 
 ### E01009. required attribute missing (必须包含特定属性)
 
-- `<html>`必须包含属性`lang`
 - `<link>`元素必须属性是`src`、`rel`
 - `<a>`必须包含属性`href`
 - `<img>`必须包含属性`src`、`alt`
@@ -290,32 +309,6 @@ Wrong(错误)：
 - `<output>`必须包含属性`name`、`for`
 - `<meter>`必须包含属性`value`
 - `<progress>`必须包含属性`value`
-
-Right(正确)：
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-  </body>
-</html>
-```
-
-Wrong(错误)：
-
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-  </body>
-</html>
-```
 
 ### E01013. `&lt;title&gt;`, `&lt;p&gt;` element must not be empty (`&lt;title&gt;`, `&lt;p&gt;`标签不可为空)
 
