@@ -433,7 +433,7 @@ Wrong(错误)：
 </html>
 ```
 
-### E01013. `&lt;title&gt;` element must not be empty (`&lt;title&gt;`标签不可为空)
+### E01013. `&lt;title&gt;`, `&lt;p&gt;` element must not be empty (`&lt;title&gt;`, `&lt;p&gt;`标签不可为空)
 
 Right(正确)：
 
@@ -461,37 +461,7 @@ Wrong(错误)：
 </html>
 ```
 
-### E01014. `&lt;p&gt;` element must not be empty (`&lt;p&gt;`标签不可为空)
-
-Right(正确)：
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-    <p>Paragraph.</p>
-  </body>
-</html>
-```
-
-Wrong(错误)：
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-    <p></p>
-  </body>
-</html>
-```
-
-### E01015. (必须包含`charset`属性的`<meta>`元素)
+### E01014. (必须包含`charset`属性的`<meta>`元素)
 
 示例如下：
 
@@ -499,7 +469,7 @@ Wrong(错误)：
 <meta charset="utf-8">
 ```
 
-### E01016. (`id`只能是唯一)
+### E01015. (`id`只能是唯一)
 
 正确：
 
@@ -519,7 +489,7 @@ Wrong(错误)：
 </body>
 ```
 
-### E01017. (`<h1>`只能出现一次)
+### E01016. (`<h1>`只能出现一次)
 
 正确：
 
@@ -539,7 +509,7 @@ Wrong(错误)：
 </body>
 ```
 
-### E01018. (不能包含特定标签)
+### E01017. (不能包含特定标签)
 
 - `<aside>`不能包含`<main>`
 - `<nav>`不能包含`<main>`、`<header>`、`<footer>`
@@ -578,7 +548,7 @@ Wrong(错误)：
 </html>
 ```
 
-### E01019. (`<main>`不带`hidden`只能出现一次)
+### E01018. (`<main>`不带`hidden`只能出现一次)
 
 正确：
 
@@ -606,7 +576,7 @@ Wrong(错误)：
 </body>
 ```
 
-### E01020. (`<script>`不能有`type="text/javascript"`属性)
+### E01019. (`<script>`不能有`type="text/javascript"`属性)
 
 正确：
 
@@ -620,7 +590,7 @@ Wrong(错误)：
 <script src="js/js.js" type="text/javascript"></script>
 ```
 
-### E01021. (`<link>`不能有`type="text/css"`属性)
+### E01020. (`<link>`不能有`type="text/css"`属性)
 
 正确：
 
