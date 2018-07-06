@@ -189,7 +189,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         rules = {
             'not_paired_tags': 'HS0005',
             'empty_tags_not_closed': 'HS0006',
-            'duplicated_attrs': 'E01010',
+            'duplicated_attrs': 'HS0009',
             'tag_not_lowercase': 'E01011',
         }
         for a, e in rules.items():
@@ -259,7 +259,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     if not found:
         reports.add(Report('E01014', path, 0, 'meta charset'))
     elif found > 1:
-        reports.add(Report('E01010', path, 0, f'meta charset {found}'))
+        reports.add(Report('HS0009', path, 0, f'meta charset {found}'))
 
     return reports
 

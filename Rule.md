@@ -178,6 +178,26 @@ Wrong(错误)：
 </body>
 ```
 
+### `HS0009`. attribute name must NOT be duplication in the same element (同一标签不可使用重复的属性)
+
+Right(正确)：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  ...
+</html>
+```
+
+Wrong(错误)：
+
+```html
+<!DOCTYPE html>
+<html lang="en" lang="zh-Hans">
+  ...
+</html>
+```
+
 ### E01008. required element missing (必须包含特定标签)
 
 - `<html>`必须包含`<head>`，`<body>`
@@ -249,34 +269,6 @@ Wrong(错误)：
 ```html
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-  </body>
-</html>
-```
-
-### E01010. duplicated attribute (同一标签不可使用重复的属性)
-
-Right(正确)：
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-  </body>
-</html>
-```
-
-Wrong(错误)：
-
-```html
-<!DOCTYPE html>
-<html lang="en" lang="zh-Hans">
   <head>
     <title>Page Title</title>
   </head>
