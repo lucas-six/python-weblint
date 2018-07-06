@@ -81,29 +81,13 @@ Paired Tags (成对标签)：
 Right(正确)：
 
 ```html
-<!DOCTYPE html>
-<html lang="zh-Hans">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-    <p>段落</p>
-  </body>
-</html>
+<p>段落</p>
 ```
 
 Wrong(错误)：
 
 ```html
-<!DOCTYPE html>
-<html lang="zh-Hans">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-    <p>段落
-  </body>
-</html>
+<p>段落
 ```
 
 ### `HS0006`. empty tag must be closed by self (空标签必须自闭合)
@@ -117,29 +101,13 @@ Empty tags (空标签)：
 Right(正确)：
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-    <br/>
-  </body>
-</html>
+<br/>
 ```
 
 Wrong(错误)：
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-    <br>
-  </body>
-</html>
+<br>
 ```
 
 ### `HS0007`. invalid attribute must NOT be used (不可使用非法属性)
