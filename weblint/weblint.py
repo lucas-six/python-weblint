@@ -244,7 +244,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
             if a_lower in DEPRECATED_ATTRS:
                 reports.add(Report('E01007', path, lineno, a))
             elif a_lower not in GLOBAL_ATTRS | VALID_ATTRS:
-                reports.add(Report('HS0006', path, lineno, a))                
+                reports.add(Report('HS0007', path, lineno, a))                
 
     for t in NOEMPTY_TAGS:
         for e in parser.find(t):
