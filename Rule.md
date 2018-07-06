@@ -2,7 +2,7 @@
 
 ## HTML
 
-### E01001. DOCTYPE must be decalred first (文档类型必须首先声明)
+### `HS0001`. DOCTYPE must be decalred first (文档类型必须首先声明)
 
 Right(正确)：
 
@@ -36,7 +36,7 @@ Wrong(错误)：
 </html>
 ```
 
-### E01002. DOCTYPE for HTML5 should be "&lt;DOCTYPE html&gt;" (HTML5的文档类型必须是"&lt;DOCTYPE html&gt;")
+### `HS0002`. DOCTYPE for HTML5 should be "&lt;DOCTYPE html&gt;" (HTML5的文档类型必须是"&lt;DOCTYPE html&gt;")
 
 Right(正确)：
 
@@ -70,7 +70,7 @@ Wrong(错误)：
 </html>
 ```
 
-### E01003. invalid tag (不可使用非法标签)
+### `HS0003`. invalid tag must NOT be used (不可使用非法标签)
 
 Right(正确)：
 
@@ -100,12 +100,12 @@ Wrong(错误)：
 </html>
 ```
 
-### E01004. deprecated tag (不可使用废弃标签)
+### `HS0004`. deprecated tag must NOT be used (不可使用废弃标签)
 
-Deprecated tags include (废弃标签包括):
+Deprecated tags  (废弃标签):
 
 ```html
-<center>, <font>, <s>, <strike>, <b>, <i>, <tt>, <small>, <frame>, <acronym>, <big>, <u>, <isindex>, <basefont>, <dir>, <applet>, <style>
+<center>, <font>, <s>, <strike>, <b>, <i>, <tt>, <small>, <frame>, <acronym>, <big>, <u>, <isindex>, <basefont>, <dir>, <applet>
 ```
 
 Right(正确)：
@@ -136,15 +136,15 @@ Wrong(错误)：
 </html>
 ```
 
-### E01005. non-selfclosed tag must be paired (双标签必须成对)
+### `HS005`. tag must be paired (双标签必须成对)
 
-Paired Tags(成对标签)：
+Paired Tags (成对标签)：
 
 ```html
 <html>, <body>, <title>, <p>, <div>, <h1>~<h6>, <abbr>, <address>, <bdi>, <bdo>, <blockquote>, <cite>, <del>, <dfn>, <em>, <ins>, <kbd>, <meter>, <progress>, <rb>, <rtc>, <rp>, <rt>, <ruby>, <time>, <datalist>, <canvas>, <figcaption>, <figure>, <audio>, <source>, <video>, <nav>, <header>, <footer>, <section>, <article>, <aside>, <details>, <dialog>, <pre>, <q>, <samp>, <strong>, <sup>, <sub>, <var>, <form>, <textarea>, <button>, <select>, <option>, <optgroup>, <label>, <fieldset>, <legend>, <frameset>, <noframes>, <map>, <a>, <ul>, <ol>, <li>, <dl>, <dt>, <dd>, <menu>, <menuitem>, <span>, <head>, <script>, <noscript>, <object>, <table>, <th>, <td>, <tr>, <tbody>, <thead>, <tfoot>, <caption>, <col>, <colgroup>, <main>, <picture>, <template>, <data>, <code>
 ```
 
-Selfclosed tags(自闭合标签)：
+Selfclosed tags (自闭合标签)：
 
 ```html
 <wbr>, <keygen>, <output>, <track>, <embed>, <input>, <iframe>, <img>, <area>, <link>, <meta>, <base>, <param>
@@ -467,7 +467,7 @@ Wrong(错误)：
 Example as below (示例如下)：
 
 ```html
-<meta charset="utf-8">
+<meta charset="utf-8"/>
 ```
 
 ### E01015. (`id`只能是唯一)
