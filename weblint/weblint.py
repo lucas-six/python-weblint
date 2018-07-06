@@ -208,7 +208,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         if tag in DEPRECATED_TAGS:
             reports.add(Report('E01004', path, lineno, tag))
         elif tag not in CLOSE_TAGS | SELFCLOSED_TAGS:
-            reports.add(Report('E01003', path, lineno, tag))
+            reports.add(Report('HS0003', path, lineno, tag))
         else:
             pass
         
