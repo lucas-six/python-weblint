@@ -8,15 +8,8 @@ Right(正确)：
 
 ```html
 <!DOCTYPE html>
-<html lang="zh-Hans">
-  <head>
-    <title>文档的标题</title>
-  </head>
-
-  <body>
-    文档的内容......
-  </body>
-
+<html lang="en">
+  ...
 </html>
 ```
 
@@ -24,15 +17,8 @@ Wrong(错误)：
 
 ```html
 <!-- <!DOCTYPE html> -->
-<html lang="zh-Hans">
-  <head>
-    <title>文档的标题</title>
-  </head>
-
-  <body>
-    文档的内容......
-  </body>
-
+<html lang="en">
+  ...
 </html>
 ```
 
