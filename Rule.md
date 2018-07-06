@@ -81,29 +81,13 @@ Paired Tags (成对标签)：
 Right(正确)：
 
 ```html
-<!DOCTYPE html>
-<html lang="zh-Hans">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-    <p>段落</p>
-  </body>
-</html>
+<p>段落</p>
 ```
 
 Wrong(错误)：
 
 ```html
-<!DOCTYPE html>
-<html lang="zh-Hans">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-    <p>段落
-  </body>
-</html>
+<p>段落
 ```
 
 ### `HS0006`. empty tag must be closed by self (空标签必须自闭合)
@@ -117,29 +101,13 @@ Empty tags (空标签)：
 Right(正确)：
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-    <br/>
-  </body>
-</html>
+<br/>
 ```
 
 Wrong(错误)：
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-    <br>
-  </body>
-</html>
+<br>
 ```
 
 ### `HS0007`. invalid attribute must NOT be used (不可使用非法属性)
@@ -147,27 +115,13 @@ Wrong(错误)：
 Right(正确)：
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-  </body>
-</html>
+<title>Page Title</title>
 ```
 
 Wrong(错误)：
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title invalidattribute="oh">Page Title</title>
-  </head>
-  <body>
-  </body>
-</html>
+<title invalidattribute="oh">Page Title</title>
 ```
 
 ### `HS0008`. deprecated attribute must NOT be used (不能使用废弃的属性)
@@ -211,12 +165,111 @@ Deprecated attributes (废弃属性包括):
 Right(正确)：
 
 ```html
+<body>
+  ...
+</body>
+```
+
+Wrong(错误)：
+
+```html
+<body bgcolor="black">
+  ...
+</body>
+```
+
+### `HS0009`. attribute name must NOT be duplication in the same element (同一标签不可使用重复的属性)
+
+Right(正确)：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  ...
+</html>
+```
+
+Wrong(错误)：
+
+```html
+<!DOCTYPE html>
+<html lang="en" lang="zh-Hans">
+  ...
+</html>
+```
+
+### `HS0010`. tag name must be in lowercase (标签名必须小写)
+
+Right(正确)：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  ...
+</html>
+```
+
+Wrong(错误)：
+
+```html
+<!DOCTYPE html>
+<HTML lang="en">
+  ...
+</html>
+```
+
+### `HS0011`. attribute name must be in lowercase (属性名必须小写)
+
+Right(正确)：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  ...
+</html>
+```
+
+Wrong(错误)：
+
+```html
+<!DOCTYPE html>
+<html LANG="en">
+  ...
+</html>
+```
+
+### `HS0012`. `<html>` element must have `lang` attribute (`<html>`元素必须包含`lang`属性)
+
+Right(正确)：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  ...
+</html>
+```
+
+Wrong(错误)：
+
+```html
+<!DOCTYPE html>
+<html>
+  ...
+</html>
+```
+
+### `HS0013`. `<html>` element must have child of `head` element (`<html>`元素必须包含`<head>`子元素)
+
+Right(正确)：
+
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Page Title</title>
+    ...
   </head>
   <body>
+    ...
   </body>
 </html>
 ```
@@ -225,18 +278,42 @@ Wrong(错误)：
 
 ```html
 <!DOCTYPE html>
+<html>
+  <body>
+    ...
+  </body>
+</html>
+```
+
+### `HS0014`. `<html>` element must have child of `body` element (`<html>`元素必须包含`<body>`子元素)
+
+Right(正确)：
+
+```html
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <title style="font-size: 1rem">Page Title</title>
+    ...
   </head>
   <body>
+    ...
   </body>
+</html>
+```
+
+Wrong(错误)：
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    ...
+  </head>
 </html>
 ```
 
 ### E01008. required element missing (必须包含特定标签)
 
-- `<html>`必须包含`<head>`，`<body>`
 - `<select>`只能且必须包含`<option>`
 - `<ul>`只能且必须包含`<li>`
 - `<ol>`只能且必须包含`<li>`
@@ -272,7 +349,6 @@ Wrong(错误)：
 
 ### E01009. required attribute missing (必须包含特定属性)
 
-- `<html>`必须包含属性`lang`
 - `<link>`元素必须属性是`src`、`rel`
 - `<a>`必须包含属性`href`
 - `<img>`必须包含属性`src`、`alt`
@@ -286,116 +362,6 @@ Wrong(错误)：
 - `<output>`必须包含属性`name`、`for`
 - `<meter>`必须包含属性`value`
 - `<progress>`必须包含属性`value`
-
-Right(正确)：
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-  </body>
-</html>
-```
-
-Wrong(错误)：
-
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-  </body>
-</html>
-```
-
-### E01010. duplicated attribute (同一标签不可使用重复的属性)
-
-Right(正确)：
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-  </body>
-</html>
-```
-
-Wrong(错误)：
-
-```html
-<!DOCTYPE html>
-<html lang="en" lang="zh-Hans">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-  </body>
-</html>
-```
-
-### E01011. tag name must be in lowercase (标签名必须小写)
-
-Right(正确)：
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-  </body>
-</html>
-```
-
-Wrong(错误)：
-
-```html
-<!DOCTYPE html>
-<HTML lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-  </body>
-</html>
-```
-
-### E01012. attribute name must be in lowercase (属性名必须小写)
-
-Right(正确)：
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-  </body>
-</html>
-```
-
-Wrong(错误)：
-
-```html
-<!DOCTYPE html>
-<html LANG="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-  </body>
-</html>
-```
 
 ### E01013. `&lt;title&gt;`, `&lt;p&gt;` element must not be empty (`&lt;title&gt;`, `&lt;p&gt;`标签不可为空)
 

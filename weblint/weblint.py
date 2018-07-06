@@ -42,12 +42,12 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
 
     REQUIRED_TAGS = {
         'html': (
-            ('head', '==', 1),
-            ('body', '==', 1),
+            (('head', '==', 1), 'HS0013'),
+            (('body', '==', 1), 'HS0014'),
         ),
         'head': (
-            ('title', '==', 1),
-            ('meta', '>=', 1),
+            (('title', '==', 1), 'HS0015'),
+            (('meta', '>=', 1), 'HS0018'),
         ),
     }
 
@@ -94,11 +94,11 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     }
 
     VALID_ATTRS = {
-        'charset',
+        'charset', 'src',
     }
 
     REQUIRED_ATTRS = {
-        'html': ('lang',),
+        'html': (('lang',), 'HS0012'),
     }
 
     NOEMPTY_TAGS = {
@@ -112,6 +112,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
             self._start_tags = []
             self.duplicated_attrs = []
             self.tag_not_lowercase = []
+            self.empty_tags_not_closed = []
 
         def handle_starttag(self, tag, attrs):
 
@@ -124,6 +125,8 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
 
             if tag not in SELFCLOSED_TAGS:
                 self._start_tags.append(tag)
+            else:
+                self.empty_tags_not_closed.append((tag, self.lineno))
             self._handle_attrs(attrs)
 
         def handle_endtag(self, tag):
@@ -184,9 +187,10 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
             return reports
 
         rules = {
-            'not_paired_tags': 'E01005',
-            'duplicated_attrs': 'E01010',
-            'tag_not_lowercase': 'E01011',
+            'not_paired_tags': 'HS0005',
+            'empty_tags_not_closed': 'HS0006',
+            'duplicated_attrs': 'HS0009',
+            'tag_not_lowercase': 'HS0010',
         }
         for a, e in rules.items():
             if hasattr(std_parser, a):
@@ -201,7 +205,6 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
 
     parser = HTML(html=doc)
     for element in parser.find():
-        print(element.element.tag)
         lxml_element = element.element
         tag = lxml_element.tag
         lineno = lxml_element.sourceline
@@ -216,32 +219,29 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         rules = REQUIRED_TAGS.get(tag)
         if rules is not None:
             for r in rules:
-                if eval(f'not len(element.find(r[0])) {r[1]} r[2]'):
-                    reports.add(Report('E01008', path, lineno, r[0]))
+                if eval(f'not len(element.find(r[0][0])) {r[0][1]} r[0][2]'):
+                    reports.add(Report(r[1], path, lineno, r[0][0]))
 
         # validate required attributes
         rules = REQUIRED_ATTRS.get(tag)
         if rules is not None:
-            for r in rules:
-                #if r not in (a.lower() for a in element.attrs):
-                #    reports.add(Report('E01009', path, lineno, r))
-                pass
+            for r in rules[0]:
+                if r not in (a.lower() for a in element.attrs):
+                    reports.add(Report(rules[1], path, lineno, r))
 
         # parse attributes
-        print(element.attrs)
         for a in element.attrs:
             a_lower = a
 
             # validate attribute name must be in lowercase
-            #print(a)
             if not a.islower():
-                reports.add(Report('E01012', path, lineno, a))
+                reports.add(Report('HS0011', path, lineno, a))
                 a_lower = a.lower()
 
             if a_lower in DEPRECATED_ATTRS:
-                reports.add(Report('E01007', path, lineno, a))
+                reports.add(Report('HS0008', path, lineno, a))
             elif a_lower not in GLOBAL_ATTRS | VALID_ATTRS:
-                reports.add(Report('E01006', path, lineno, a))                
+                reports.add(Report('HS0007', path, lineno, a))                
 
     for t in NOEMPTY_TAGS:
         for e in parser.find(t):
@@ -254,9 +254,9 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         if 'charset' in e.attrs:
             found += 1
     if not found:
-        reports.add(Report('E01014', path, 0, 'meta charset'))
+        reports.add(Report('HS0018', path, 0, 'meta charset'))
     elif found > 1:
-        reports.add(Report('E01010', path, 0, f'meta charset {found}'))
+        reports.add(Report('HS0009', path, 0, f'meta charset {found}'))
 
     return reports
 
