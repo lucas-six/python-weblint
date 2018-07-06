@@ -463,6 +463,34 @@ Wrong(错误)：
 
 ### E01014. `&lt;p&gt;` element must not be empty (`&lt;p&gt;`标签不可为空)
 
+Right(正确)：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+    <p>Paragraph.</p>
+  </body>
+</html>
+```
+
+Wrong(错误)：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+    <p></p>
+  </body>
+</html>
+```
+
 ### E01015. (必须包含`charset`属性的`<meta>`元素)
 
 示例如下：
