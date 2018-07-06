@@ -53,8 +53,18 @@ class WebLintTests(unittest.TestCase):
     def test_HS0011(self):
         self._test('tests/HS0011.html', 'HS0011', 2, 'LANG')
 
-    def test_Hs0012(self):
+    def test_HS0012(self):
         self._test('tests/HS0012.html', 'HS0012', 2, 'lang')
+
+    def test_HS0013(self):
+        path = pathlib.Path('tests/HS0013.html')
+        expected = {
+            weblint.Report('HS0013', path, 2, 'head'),
+            weblint.Report('HS0018', path, 0, 'meta charset')}
+        self.assertSetEqual(weblint.htmlparser(path), expected)
+
+    def test_HS0014(self):
+        self._test('tests/HS0014.html', 'HS0014', 2, 'body')
 
     # def test_E01008(self):
     #     self._test('tests/E01008.html', 'E01008', 3, 'title')

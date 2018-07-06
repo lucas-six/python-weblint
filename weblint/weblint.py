@@ -42,12 +42,12 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
 
     REQUIRED_TAGS = {
         'html': (
-            ('head', '==', 1),
-            ('body', '==', 1),
+            (('head', '==', 1), 'HS0013'),
+            (('body', '==', 1), 'HS0014'),
         ),
         'head': (
-            ('title', '==', 1),
-            ('meta', '>=', 1),
+            (('title', '==', 1), 'HS0015'),
+            (('meta', '>=', 1), 'HS0018'),
         ),
     }
 
@@ -219,8 +219,8 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         rules = REQUIRED_TAGS.get(tag)
         if rules is not None:
             for r in rules:
-                if eval(f'not len(element.find(r[0])) {r[1]} r[2]'):
-                    reports.add(Report('HS0008', path, lineno, r[0]))
+                if eval(f'not len(element.find(r[0][0])) {r[0][1]} r[0][2]'):
+                    reports.add(Report(r[1], path, lineno, r[0][0]))
 
         # validate required attributes
         rules = REQUIRED_ATTRS.get(tag)
@@ -254,7 +254,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         if 'charset' in e.attrs:
             found += 1
     if not found:
-        reports.add(Report('E01014', path, 0, 'meta charset'))
+        reports.add(Report('HS0018', path, 0, 'meta charset'))
     elif found > 1:
         reports.add(Report('HS0009', path, 0, f'meta charset {found}'))
 

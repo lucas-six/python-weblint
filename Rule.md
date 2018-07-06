@@ -258,9 +258,62 @@ Wrong(错误)：
 </html>
 ```
 
+### `HS0013`. `<html>` element must have child of `head` element (`<html>`元素必须包含`<head>`子元素)
+
+Right(正确)：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    ...
+  </head>
+  <body>
+    ...
+  </body>
+</html>
+```
+
+Wrong(错误)：
+
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    ...
+  </body>
+</html>
+```
+
+### `HS0014`. `<html>` element must have child of `body` element (`<html>`元素必须包含`<body>`子元素)
+
+Right(正确)：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    ...
+  </head>
+  <body>
+    ...
+  </body>
+</html>
+```
+
+Wrong(错误)：
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    ...
+  </head>
+</html>
+```
+
 ### E01008. required element missing (必须包含特定标签)
 
-- `<html>`必须包含`<head>`，`<body>`
 - `<select>`只能且必须包含`<option>`
 - `<ul>`只能且必须包含`<li>`
 - `<ol>`只能且必须包含`<li>`
