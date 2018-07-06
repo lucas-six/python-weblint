@@ -34,11 +34,11 @@ Report = namedtuple('Report', ['rule', 'path', 'lineno', 'object'])
 def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html'):
     '''HTML Parser.'''
 
-    DEPRECATED_TAGS = (
+    DEPRECATED_TAGS = {
         'font', 'center', 's', 'strike', 'b', 'i', 'tt', 'small', 'frame',
         'acronym', 'big', 'u', 'isindex', 'basefont', 'dir', 'applet',
         'style',
-    )
+    }
 
     REQUIRED_TAGS = {
         'html': (
@@ -81,24 +81,24 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html'):
         'var', 'video'
     }
 
-    DEPRECATED_ATTRS = (
+    DEPRECATED_ATTRS = {
         'style', 'manifest', 'xmlns', 'align', 'alink', 'link', 'vlink',
         'text', 'background', 'bgcolor', 'border', 'char', 'charoff',
         'compact', 'frame', 'frameborder', 'hspace', 'nowrap', 'rules',
         'value', 'valign', 'accept', 'vspace', 'noframes'
-    )
+    }
 
-    GLOBAL_ATTRS = (
+    GLOBAL_ATTRS = {
         'lang', 'id', 'class',
-    )
+    }
 
     REQUIRED_ATTRS = {
         'html': ('lang',),
     }
 
-    NOEMPTY_TAGS = (
+    NOEMPTY_TAGS = {
         'title', 'p',
-    )
+    }
 
     class _StdHTMLParser(HTMLParser):
         def handle_decl(self, data):
