@@ -148,7 +148,7 @@ Right(正确)：
 
 ```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
   <head>
     <title>Page Title</title>
   </head>
@@ -162,7 +162,7 @@ Wrong(错误)：
 
 ```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
   <head>
     <title>Page Title</title>
   </head>
