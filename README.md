@@ -24,7 +24,7 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 
 ### Global (全局)
 
-- **G0001**. file or directory not exist (文件或目录不存在)
+- **G00001**. file or directory not exist (文件或目录不存在)
 
 ### HTML
 
