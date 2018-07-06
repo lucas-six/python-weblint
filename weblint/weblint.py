@@ -194,7 +194,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
                     reports.add(Report(e, path, t[1], t[0]))
 
     except AttributeError:
-        reports.add(Report('E01001', path, lineno, obj))
+        reports.add(Report('HS0001', path, lineno, obj))
         return reports
     finally:
         std_parser.close()

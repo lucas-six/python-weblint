@@ -20,8 +20,8 @@ class WebLintTests(unittest.TestCase):
     def testG00001(self):
         self._test('not_exist_file', 'G00001', 0, '')
 
-    def test_E01001(self):
-        self._test('tests/E01001.html', 'E01001', 1, 'DOCTYPE')
+    def test_HS0001(self):
+        self._test('tests/HS0001.html', 'HS0001', 1, 'DOCTYPE')
 
     def test_E01002(self):
         self._test('tests/E01002.html', 'E01002', 1, 'DOCTYPE')
