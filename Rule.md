@@ -70,34 +70,6 @@ Deprecated tags  (废弃标签):
 <center>, <font>, <s>, <strike>, <b>, <i>, <tt>, <small>, <frame>, <acronym>, <big>, <u>, <isindex>, <basefont>, <dir>, <applet>
 ```
 
-Right(正确)：
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-    <p>something</p>
-  </body>
-</html>
-```
-
-Wrong(错误)：
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-    <font>something</font>
-  </body>
-</html>
-```
-
 ### `HS005`. tag must be paired (双标签必须成对)
 
 Paired Tags (成对标签)：

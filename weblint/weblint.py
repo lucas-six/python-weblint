@@ -206,7 +206,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         tag = lxml_element.tag
         lineno = lxml_element.sourceline
         if tag in DEPRECATED_TAGS:
-            reports.add(Report('E01004', path, lineno, tag))
+            reports.add(Report('HS0004', path, lineno, tag))
         elif tag not in CLOSE_TAGS | SELFCLOSED_TAGS:
             reports.add(Report('HS0003', path, lineno, tag))
         else:

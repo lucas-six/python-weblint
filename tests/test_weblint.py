@@ -29,8 +29,8 @@ class WebLintTests(unittest.TestCase):
     def test_HS0003(self):
         self._test('tests/HS0003.html', 'HS0003', 8, 'invalidtag')
 
-    def test_E01004(self):
-        self._test('tests/E01004.html', 'E01004', 7, 'font')
+    def test_HS0004(self):
+        self._test('tests/HS0004.html', 'HS0004', 8, 'font')
 
     def test_E01005(self):
         self._test('tests/E01005.html', 'E01005', 8, 'body')
