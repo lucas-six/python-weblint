@@ -47,17 +47,17 @@ class WebLintTests(unittest.TestCase):
     def test_HS0009(self):
         self._test('tests/HS0009.html', 'HS0009', 2, 'lang 2')
 
+    def test_HS0010(self):
+        self._test('tests/HS0010.html', 'HS0010', 2, 'HTML')
+
+    def test_HS0011(self):
+        self._test('tests/HS0011.html', 'HS0011', 2, 'LANG')
+
     # def test_E01008(self):
     #     self._test('tests/E01008.html', 'E01008', 3, 'title')
 
     # def test_E01009(self):
     #     self._test('tests/E01009.html', 'E01009', 2, 'lang')
-
-    # def test_E01011(self):
-    #     self._test('tests/E01011.html', 'E01011', 2, 'HTML')
-
-    # def test_E01012(self):
-    #     self._test('tests/E01012.html', 'E01012', 2, 'LANG')
 
     # def test_E01013(self):
     #     path = pathlib.Path('tests/E01013.html')

@@ -205,7 +205,6 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
 
     parser = HTML(html=doc)
     for element in parser.find():
-        print(element.element.tag)
         lxml_element = element.element
         tag = lxml_element.tag
         lineno = lxml_element.sourceline
@@ -232,13 +231,12 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
                 pass
 
         # parse attributes
-        print(element.attrs)
         for a in element.attrs:
             a_lower = a
 
             # validate attribute name must be in lowercase
             if not a.islower():
-                reports.add(Report('E01012', path, lineno, a))
+                reports.add(Report('HS0011', path, lineno, a))
                 a_lower = a.lower()
 
             if a_lower in DEPRECATED_ATTRS:
