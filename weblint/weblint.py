@@ -180,7 +180,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     std_parser.feed(doc)
     try:
         if std_parser.doctype != doctype:
-            reports.add(Report('E01002', path, lineno, obj))
+            reports.add(Report('HS0002', path, lineno, obj))
             return reports
 
         rules = {
