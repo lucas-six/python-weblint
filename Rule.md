@@ -208,7 +208,7 @@ Wrong(错误)：
 </html>
 ```
 
-### E01006. invalid attribute (不可使用非法属性)
+### `HS0007`. invalid attribute must NOT be used (不可使用非法属性)
 
 Right(正确)：
 
@@ -236,7 +236,7 @@ Wrong(错误)：
 </html>
 ```
 
-### E01007. deprecated attribute (不能使用废弃的属性)
+### `HS0008`. deprecated attribute must NOT be used (不能使用废弃的属性)
 
 Deprecated attributes (废弃属性包括):
 
