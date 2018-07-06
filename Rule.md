@@ -462,9 +462,9 @@ Wrong(错误)：
 </html>
 ```
 
-### E01014. (必须包含`charset`属性的`<meta>`元素)
+### E01014. `&lt;meta charset=""&gt;` element required (必须包含`charset`属性的`<meta>`元素)
 
-示例如下：
+Example as below (示例如下)：
 
 ```html
 <meta charset="utf-8">

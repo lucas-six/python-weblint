@@ -32,7 +32,7 @@ The Web Code Quality Tool, including both front-end (HTML, CSS, JavaScript) and 
 - E01011. tag name must be in lowercase (标签名必须小写)
 - E01012. attribute name must be in lowercase (属性名必须小写)
 - E01013. `&lt;title&gt;`, `&lt;p&gt;` element must not be empty (`&lt;title&gt;`, `&lt;p&gt;`标签不可为空)
-- E01014. (必须包含`charset`属性的`<meta>`元素)
+- E01014. `&lt;meta charset=""&gt;` element required (必须包含`charset`属性的`<meta>`元素)
 - E01015. (`id`只能是唯一)
 - E01016. (`<h1>`只能出现一次)
 - E01017. (不能包含特定标签)
