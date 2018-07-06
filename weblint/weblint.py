@@ -112,6 +112,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
             self._start_tags = []
             self.duplicated_attrs = []
             self.tag_not_lowercase = []
+            self.empty_tags_not_closed = []
 
         def handle_starttag(self, tag, attrs):
 
@@ -124,6 +125,8 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
 
             if tag not in SELFCLOSED_TAGS:
                 self._start_tags.append(tag)
+            else:
+                self.empty_tags_not_closed.append((tag, self.lineno))
             self._handle_attrs(attrs)
 
         def handle_endtag(self, tag):
@@ -185,6 +188,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
 
         rules = {
             'not_paired_tags': 'HS0005',
+            'empty_tags_not_closed': 'HS0006',
             'duplicated_attrs': 'E01010',
             'tag_not_lowercase': 'E01011',
         }
@@ -233,7 +237,6 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
             a_lower = a
 
             # validate attribute name must be in lowercase
-            #print(a)
             if not a.islower():
                 reports.add(Report('E01012', path, lineno, a))
                 a_lower = a.lower()
