@@ -221,7 +221,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         if rules is not None:
             for r in rules:
                 if eval(f'not len(element.find(r[0])) {r[1]} r[2]'):
-                    reports.add(Report('E01008', path, lineno, r[0]))
+                    reports.add(Report('HS0008', path, lineno, r[0]))
 
         # validate required attributes
         rules = REQUIRED_ATTRS.get(tag)
@@ -242,7 +242,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
                 a_lower = a.lower()
 
             if a_lower in DEPRECATED_ATTRS:
-                reports.add(Report('E01007', path, lineno, a))
+                reports.add(Report('HS0008', path, lineno, a))
             elif a_lower not in GLOBAL_ATTRS | VALID_ATTRS:
                 reports.add(Report('HS0007', path, lineno, a))                
 

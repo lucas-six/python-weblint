@@ -41,27 +41,27 @@ class WebLintTests(unittest.TestCase):
     def test_HS0007(self):
         self._test('tests/HS0007.html', 'HS0007', 5, 'invalidattribute')
 
-    def test_E01007(self):
-        self._test('tests/E01007.html', 'E01007', 4, 'style')
+    def test_HS0008(self):
+        self._test('tests/HS0008.html', 'HS0008', 7, 'bgcolor')
 
-    def test_E01008(self):
-        self._test('tests/E01008.html', 'E01008', 3, 'title')
+    # def test_E01008(self):
+    #     self._test('tests/E01008.html', 'E01008', 3, 'title')
 
-    def test_E01009(self):
-        self._test('tests/E01009.html', 'E01009', 2, 'lang')
+    # def test_E01009(self):
+    #     self._test('tests/E01009.html', 'E01009', 2, 'lang')
 
-    def test_E01010(self):
-        self._test('tests/E01010.html', 'E01010', 2, 'lang 2')
+    # def test_E01010(self):
+    #     self._test('tests/E01010.html', 'E01010', 2, 'lang 2')
 
-    def test_E01011(self):
-        self._test('tests/E01011.html', 'E01011', 2, 'HTML')
+    # def test_E01011(self):
+    #     self._test('tests/E01011.html', 'E01011', 2, 'HTML')
 
-    def test_E01012(self):
-        self._test('tests/E01012.html', 'E01012', 2, 'LANG')
+    # def test_E01012(self):
+    #     self._test('tests/E01012.html', 'E01012', 2, 'LANG')
 
-    def test_E01013(self):
-        path = pathlib.Path('tests/E01013.html')
-        expected = {
-            weblint.Report('E01013', path, 5, 'title'),
-            weblint.Report('E01013', path, 8, 'p')}
-        self.assertSetEqual(weblint.htmlparser(path), expected)
+    # def test_E01013(self):
+    #     path = pathlib.Path('tests/E01013.html')
+    #     expected = {
+    #         weblint.Report('E01013', path, 5, 'title'),
+    #         weblint.Report('E01013', path, 8, 'p')}
+    #     self.assertSetEqual(weblint.htmlparser(path), expected)

@@ -165,27 +165,17 @@ Deprecated attributes (废弃属性包括):
 Right(正确)：
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-  </body>
-</html>
+<body>
+  ...
+</body>
 ```
 
 Wrong(错误)：
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title style="font-size: 1rem">Page Title</title>
-  </head>
-  <body>
-  </body>
-</html>
+<body bgcolor="black">
+  ...
+</body>
 ```
 
 ### E01008. required element missing (必须包含特定标签)
