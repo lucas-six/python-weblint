@@ -198,6 +198,26 @@ Wrong(错误)：
 </html>
 ```
 
+### `HS0010`. tag name must be in lowercase (标签名必须小写)
+
+Right(正确)：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  ...
+</html>
+```
+
+Wrong(错误)：
+
+```html
+<!DOCTYPE html>
+<HTML lang="en">
+  ...
+</html>
+```
+
 ### E01008. required element missing (必须包含特定标签)
 
 - `<html>`必须包含`<head>`，`<body>`
@@ -269,34 +289,6 @@ Wrong(错误)：
 ```html
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-  </body>
-</html>
-```
-
-### E01011. tag name must be in lowercase (标签名必须小写)
-
-Right(正确)：
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-  </body>
-</html>
-```
-
-Wrong(错误)：
-
-```html
-<!DOCTYPE html>
-<HTML lang="en">
   <head>
     <title>Page Title</title>
   </head>

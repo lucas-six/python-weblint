@@ -190,7 +190,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
             'not_paired_tags': 'HS0005',
             'empty_tags_not_closed': 'HS0006',
             'duplicated_attrs': 'HS0009',
-            'tag_not_lowercase': 'E01011',
+            'tag_not_lowercase': 'HS0010',
         }
         for a, e in rules.items():
             if hasattr(std_parser, a):
