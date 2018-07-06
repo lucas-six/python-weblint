@@ -97,7 +97,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html'):
     }
 
     NOEMPTY_TAGS = (
-        'title',
+        'title', 'p',
     )
 
     class _StdHTMLParser(HTMLParser):
@@ -238,7 +238,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html'):
     for t in NOEMPTY_TAGS:
         for e in parser.find(t):
             if not e.text:
-                reports.append(Report('E01013', path, lineno, e.element.tag))
+                reports.append(Report('E01013', path, e.element.sourceline, e.element.tag))
 
     return reports
 
