@@ -115,27 +115,13 @@ Wrong(错误)：
 Right(正确)：
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-  </body>
-</html>
+<title>Page Title</title>
 ```
 
 Wrong(错误)：
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title invalidattribute="oh">Page Title</title>
-  </head>
-  <body>
-  </body>
-</html>
+<title invalidattribute="oh">Page Title</title>
 ```
 
 ### `HS0008`. deprecated attribute must NOT be used (不能使用废弃的属性)
