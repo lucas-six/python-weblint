@@ -48,28 +48,18 @@ Right(正确)：
 
 ```html
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-    <p>AAA</p>
-  </body>
-</html>
+<html2 lang="en">
+  ...
+</html2>
 ```
 
 Wrong(错误)：
 
 ```html
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-    <invalidtag>AAA</invalidtag>
-  </body>
-</html>
+<html2 lang="en">
+  ...
+</html2>
 ```
 
 ### `HS0004`. deprecated tag must NOT be used (不可使用废弃标签)
