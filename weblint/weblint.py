@@ -50,18 +50,42 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html'):
         ),
     }
 
-    SELFCLOSED_TAGS = ('meta', 'img', 'br', 'hr', 'input')
+    SELFCLOSED_TAGS = {
+        'area', 'base', 'br', 'embed', 'hr', 'iframe', 'input', 'img', 'keygen',
+        'link', 'meta', 'output', 'param', 'track', 'wbr'
+    }
 
-    CLOSE_TAGS = (
-        'html', 'head', 'title', 'body', 'h1', 'h2', 'h3', 'p', 'a',
-        'section', 'header', 'footer', 'aside', 'strong', 'em', 'main',
-    )
+    CLOSE_TAGS = {
+        'a', 'abbr', 'address', 'article', 'aside', 'audio',
+        'bdi', 'bdo', 'blockquote', 'body', 'button',
+        'canvas', 'caption', 'cite', 'code', 'col', 'colgroup',
+        'data', 'datalist', 'dd', 'del', 'details', 'dfn', 'dialog', 'div',
+            'dl', 'dt',
+        'em',
+        'fieldset', 'figure', 'figcaption', 'footer', 'form', 'frameset',
+        'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'header', 'hgroup', 'html',
+        'ins',
+        'kbd',
+        'label', 'legend', 'li',
+        'main', 'map', 'menu', 'menuitem', 'meter',
+        'nav', 'noscript',
+        'object', 'ol', 'option', 'optgroup',
+        'p', 'picture', 'pre', 'progress',
+        'q',
+        'rb', 'rp', 'rt', 'rtc', 'ruby',
+        'samp', 'script', 'section', 'select', 'source', 'span', 'strong',
+            'sub', 'sup',
+        'table', 'textarea', 'tbody', 'td', 'template', 'th', 'thead', 'time',
+            'title', 'tfoot', 'tr',
+        'ul',
+        'var', 'video'
+    }
 
     DEPRECATED_ATTRS = (
         'style', 'manifest', 'xmlns', 'align', 'alink', 'link', 'vlink',
         'text', 'background', 'bgcolor', 'border', 'char', 'charoff',
         'compact', 'frame', 'frameborder', 'hspace', 'nowrap', 'rules',
-        'value', 'valign', 'accept', 'vspace',
+        'value', 'valign', 'accept', 'vspace', 'noframes'
     )
 
     GLOBAL_ATTRS = (
@@ -181,7 +205,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html'):
         lineno = lxml_element.sourceline
         if tag in DEPRECATED_TAGS:
             reports.append(Report('E01004', path, lineno, tag))
-        elif tag not in CLOSE_TAGS + SELFCLOSED_TAGS:
+        elif tag not in CLOSE_TAGS | SELFCLOSED_TAGS:
             reports.append(Report('E01003', path, lineno, tag))
         else:
             pass

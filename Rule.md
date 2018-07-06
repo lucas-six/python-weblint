@@ -4,7 +4,7 @@
 
 ### E01001. DOCTYPE must be decalred first (文档类型必须首先声明)
 
-正确：
+Right(正确)：
 
 ```html
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
 </html>
 ```
 
-错误：
+Wrong(错误)：
 
 ```html
 <!-- <!DOCTYPE html> -->
@@ -38,7 +38,7 @@
 
 ### E01002. DOCTYPE for HTML5 should be "&lt;DOCTYPE html&gt;" (HTML5的文档类型必须是"&lt;DOCTYPE html&gt;")
 
-正确：
+Right(正确)：
 
 ```html
 <!DOCTYPE html>
@@ -54,7 +54,7 @@
 </html>
 ```
 
-错误：
+Wrong(错误)：
 
 ```html
 <!DOCTYPE html6>
@@ -72,7 +72,7 @@
 
 ### E01003. invalid tag (不可使用非法标签)
 
-正确：
+Right(正确)：
 
 ```html
 <!DOCTYPE html>
@@ -86,7 +86,7 @@
 </html>
 ```
 
-错误：
+Wrong(错误)：
 
 ```html
 <!DOCTYPE html>
@@ -102,13 +102,13 @@
 
 ### E01004. deprecated tag (不可使用废弃标签)
 
-废弃标签包括
+Deprecated tags include (废弃标签包括):
 
 ```html
 <center>, <font>, <s>, <strike>, <b>, <i>, <tt>, <small>, <frame>, <acronym>, <big>, <u>, <isindex>, <basefont>, <dir>, <applet>, <style>
 ```
 
-正确：
+Right(正确)：
 
 ```html
 <!DOCTYPE html>
@@ -122,7 +122,7 @@
 </html>
 ```
 
-错误：
+Wrong(错误)：
 
 ```html
 <!DOCTYPE html>
@@ -138,19 +138,19 @@
 
 ### E01005. non-selfclosed tag must be paired (双标签必须成对)
 
-成对标签：
+Paired Tags(成对标签)：
 
 ```html
-<html>, <body>, <title>, <p>, <div>, <h1>~<h6>,<abbr>, <address>, <bdi>, <bdo>, <blockquote>, <cite>, <del>, <dfn>, <em>, <ins>, <kbd>, <meter>, <progress>, <rb>, <rtc>, <rp>, <rt>, <ruby>, <time>, <datalist>, <canvas>, <figcaption>, <figure>, <audio>, <source>, <video>, <nav>, <header>, <footer>, <section>, <article>, <aside>, <details>, <dialog>, <pre>, <q>, <samp>, <strong>, <sup>, <sub>, <var>, <form>, <textarea>, <button>, <select>, <option>, <optgroup>, <label>, <fieldset>, <legend>, <frameset>,<noframes>, <map>, <a>, <ul>, <ol>, <li>, <dl>, <dt>, <dd>, <menu>, <menuitem>, <span>, <head>, <script>, <noscript>, <object>, <table>, <th>, <td>, <tr>, <tbody>, <thead>, <tfoot>, <caption>, <col>, <colgroup>, <main>, <picture>, <template>, <data>, <code>
+<html>, <body>, <title>, <p>, <div>, <h1>~<h6>, <abbr>, <address>, <bdi>, <bdo>, <blockquote>, <cite>, <del>, <dfn>, <em>, <ins>, <kbd>, <meter>, <progress>, <rb>, <rtc>, <rp>, <rt>, <ruby>, <time>, <datalist>, <canvas>, <figcaption>, <figure>, <audio>, <source>, <video>, <nav>, <header>, <footer>, <section>, <article>, <aside>, <details>, <dialog>, <pre>, <q>, <samp>, <strong>, <sup>, <sub>, <var>, <form>, <textarea>, <button>, <select>, <option>, <optgroup>, <label>, <fieldset>, <legend>, <frameset>, <noframes>, <map>, <a>, <ul>, <ol>, <li>, <dl>, <dt>, <dd>, <menu>, <menuitem>, <span>, <head>, <script>, <noscript>, <object>, <table>, <th>, <td>, <tr>, <tbody>, <thead>, <tfoot>, <caption>, <col>, <colgroup>, <main>, <picture>, <template>, <data>, <code>
 ```
 
-自闭合标签：
+Selfclosed tags(自闭合标签)：
 
 ```html
 <wbr>, <keygen>, <output>, <track>, <embed>, <input>, <iframe>, <img>, <area>, <link>, <meta>, <base>, <param>
 ```
 
-正确：
+Right(正确)：
 
 ```html
 <!DOCTYPE html>
@@ -164,7 +164,7 @@
 </html>
 ```
 
-错误：
+Wrong(错误)：
 
 ```html
 <!DOCTYPE html>
@@ -180,7 +180,7 @@
 
 ### E01006. invalid attribute (不可使用非法属性)
 
-正确：
+Right(正确)：
 
 ```html
 <!DOCTYPE html>
@@ -193,7 +193,7 @@
 </html>
 ```
 
-错误：
+Wrong(错误)：
 
 ```html
 <!DOCTYPE html>
@@ -208,9 +208,9 @@
 
 ### E01007. deprecated attribute (不能使用废弃的属性)
 
-废弃属性包括
+Deprecated attributes (废弃属性包括):
 
-| 属性 | 所属的元素 |
+| Attribute (属性) | Element (所属的元素) |
 | ---- | ---- |
 | manifest | html |
 | xmlns | html,title |
@@ -244,7 +244,7 @@
 | target | link |
 | height | th, td |
 
-正确：
+Right(正确)：
 
 ```html
 <!DOCTYPE html>
@@ -257,7 +257,7 @@
 </html>
 ```
 
-错误：
+Wrong(错误)：
 
 ```html
 <!DOCTYPE html>
@@ -281,7 +281,7 @@
 - `<video>`必须包含属性`controls`和`<source>`，且`<source>`必须包含`src`属性
 - `<audio>`必须包含属性`controls`和`<source>`，且`<source>`必须包含`src`属性
 
-正确：
+Right(正确)：
 
 ```html
 <!DOCTYPE html>
@@ -294,7 +294,7 @@
 </html>
 ```
 
-错误：
+Wrong(错误)：
 
 ```html
 <!DOCTYPE html>
@@ -323,7 +323,7 @@
 - `<meter>`必须包含属性`value`
 - `<progress>`必须包含属性`value`
 
-正确：
+Right(正确)：
 
 ```html
 <!DOCTYPE html>
@@ -336,7 +336,7 @@
 </html>
 ```
 
-错误：
+Wrong(错误)：
 
 ```html
 <!DOCTYPE html>
@@ -351,7 +351,7 @@
 
 ### E01010. duplicated attribute (同一标签不可使用重复的属性)
 
-正确：
+Right(正确)：
 
 ```html
 <!DOCTYPE html>
@@ -364,7 +364,7 @@
 </html>
 ```
 
-错误：
+Wrong(错误)：
 
 ```html
 <!DOCTYPE html>
@@ -379,7 +379,7 @@
 
 ### E01011. tag name must be in lowercase (标签名必须小写)
 
-正确：
+Right(正确)：
 
 ```html
 <!DOCTYPE html>
@@ -392,7 +392,7 @@
 </html>
 ```
 
-错误：
+Wrong(错误)：
 
 ```html
 <!DOCTYPE html>
@@ -407,7 +407,7 @@
 
 ### E01012. attribute name must be in lowercase (属性名必须小写)
 
-正确：
+Right(正确)：
 
 ```html
 <!DOCTYPE html>
@@ -420,7 +420,7 @@
 </html>
 ```
 
-错误：
+Wrong(错误)：
 
 ```html
 <!DOCTYPE html>
@@ -437,7 +437,7 @@
 
 - `<p>`内容不能为空
 
-正确：
+Right(正确)：
 
 ```html
 <!DOCTYPE html>
@@ -450,7 +450,7 @@
 </html>
 ```
 
-错误：
+Wrong(错误)：
 
 ```html
 <!DOCTYPE html>
