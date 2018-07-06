@@ -184,7 +184,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
             return reports
 
         rules = {
-            'not_paired_tags': 'E01005',
+            'not_paired_tags': 'HS0005',
             'duplicated_attrs': 'E01010',
             'tag_not_lowercase': 'E01011',
         }
