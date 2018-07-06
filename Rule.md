@@ -2,21 +2,14 @@
 
 ## HTML
 
-### E01001. DOCTYPE must be decalred first (文档类型必须首先声明)
+### `HS0001`. DOCTYPE must be decalred first (文档类型必须首先声明)
 
 Right(正确)：
 
 ```html
 <!DOCTYPE html>
-<html lang="zh-Hans">
-  <head>
-    <title>文档的标题</title>
-  </head>
-
-  <body>
-    文档的内容......
-  </body>
-
+<html lang="en">
+  ...
 </html>
 ```
 
@@ -24,33 +17,19 @@ Wrong(错误)：
 
 ```html
 <!-- <!DOCTYPE html> -->
-<html lang="zh-Hans">
-  <head>
-    <title>文档的标题</title>
-  </head>
-
-  <body>
-    文档的内容......
-  </body>
-
+<html lang="en">
+  ...
 </html>
 ```
 
-### E01002. DOCTYPE for HTML5 should be "&lt;DOCTYPE html&gt;" (HTML5的文档类型必须是"&lt;DOCTYPE html&gt;")
+### `HS0002`. DOCTYPE for HTML5 should be "&lt;DOCTYPE html&gt;" (HTML5的文档类型必须是"&lt;DOCTYPE html&gt;")
 
 Right(正确)：
 
 ```html
 <!DOCTYPE html>
-<html lang="zh-Hans">
-  <head>
-    <title>文档的标题</title>
-  </head>
-
-  <body>
-    文档的内容......
-  </body>
-
+<html lang="en">
+  ...
 </html>
 ```
 
@@ -59,92 +38,77 @@ Wrong(错误)：
 ```html
 <!DOCTYPE html6>
 <html lang="zh-Hans">
-  <head>
-    <title>文档的标题</title>
-  </head>
-
-  <body>
-    文档的内容......
-  </body>
-
+  ...
 </html>
 ```
 
-### E01003. invalid tag (不可使用非法标签)
+### `HS0003`. invalid tag must NOT be used (不可使用非法标签)
 
 Right(正确)：
 
 ```html
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-    <p>AAA</p>
-  </body>
-</html>
+<html2 lang="en">
+  ...
+</html2>
 ```
 
 Wrong(错误)：
 
 ```html
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-    <invalidtag>AAA</invalidtag>
-  </body>
-</html>
+<html2 lang="en">
+  ...
+</html2>
 ```
 
-### E01004. deprecated tag (不可使用废弃标签)
+### `HS0004`. deprecated tag must NOT be used (不可使用废弃标签)
 
-Deprecated tags include (废弃标签包括):
+Deprecated tags  (废弃标签):
 
 ```html
-<center>, <font>, <s>, <strike>, <b>, <i>, <tt>, <small>, <frame>, <acronym>, <big>, <u>, <isindex>, <basefont>, <dir>, <applet>, <style>
+<center>, <font>, <s>, <strike>, <b>, <i>, <tt>, <small>, <frame>, <acronym>, <big>, <u>, <isindex>, <basefont>, <dir>, <applet>
 ```
 
-Right(正确)：
+### `HS005`. tag must be paired (双标签必须成对)
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-    <p>something</p>
-  </body>
-</html>
-```
-
-Wrong(错误)：
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-    <font>something</font>
-  </body>
-</html>
-```
-
-### E01005. non-selfclosed tag must be paired (双标签必须成对)
-
-Paired Tags(成对标签)：
+Paired Tags (成对标签)：
 
 ```html
 <html>, <body>, <title>, <p>, <div>, <h1>~<h6>, <abbr>, <address>, <bdi>, <bdo>, <blockquote>, <cite>, <del>, <dfn>, <em>, <ins>, <kbd>, <meter>, <progress>, <rb>, <rtc>, <rp>, <rt>, <ruby>, <time>, <datalist>, <canvas>, <figcaption>, <figure>, <audio>, <source>, <video>, <nav>, <header>, <footer>, <section>, <article>, <aside>, <details>, <dialog>, <pre>, <q>, <samp>, <strong>, <sup>, <sub>, <var>, <form>, <textarea>, <button>, <select>, <option>, <optgroup>, <label>, <fieldset>, <legend>, <frameset>, <noframes>, <map>, <a>, <ul>, <ol>, <li>, <dl>, <dt>, <dd>, <menu>, <menuitem>, <span>, <head>, <script>, <noscript>, <object>, <table>, <th>, <td>, <tr>, <tbody>, <thead>, <tfoot>, <caption>, <col>, <colgroup>, <main>, <picture>, <template>, <data>, <code>
 ```
 
-Selfclosed tags(自闭合标签)：
+Right(正确)：
+
+```html
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+    <p>段落</p>
+  </body>
+</html>
+```
+
+Wrong(错误)：
+
+```html
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <title>Page Title</title>
+  </head>
+  <body>
+    <p>段落
+  </body>
+</html>
+```
+
+### `HS0006`. empty tag must be closed by self (空标签必须自闭合)
+
+Empty tags (空标签)：
 
 ```html
 <wbr>, <keygen>, <output>, <track>, <embed>, <input>, <iframe>, <img>, <area>, <link>, <meta>, <base>, <param>
@@ -159,7 +123,7 @@ Right(正确)：
     <title>Page Title</title>
   </head>
   <body>
-    <p>段落</p><br>
+    <br/>
   </body>
 </html>
 ```
@@ -173,12 +137,12 @@ Wrong(错误)：
     <title>Page Title</title>
   </head>
   <body>
-    <p>段落
+    <br>
   </body>
 </html>
 ```
 
-### E01006. invalid attribute (不可使用非法属性)
+### `HS0007`. invalid attribute must NOT be used (不可使用非法属性)
 
 Right(正确)：
 
@@ -206,7 +170,7 @@ Wrong(错误)：
 </html>
 ```
 
-### E01007. deprecated attribute (不能使用废弃的属性)
+### `HS0008`. deprecated attribute must NOT be used (不能使用废弃的属性)
 
 Deprecated attributes (废弃属性包括):
 
@@ -433,9 +397,7 @@ Wrong(错误)：
 </html>
 ```
 
-### E01013. "title" element must not be empty (title标签不可为空)
-
-- `<p>`内容不能为空
+### E01013. `&lt;title&gt;`, `&lt;p&gt;` element must not be empty (`&lt;title&gt;`, `&lt;p&gt;`标签不可为空)
 
 Right(正确)：
 
@@ -459,16 +421,17 @@ Wrong(错误)：
     <title></title>
   </head>
   <body>
+    <p></p>
   </body>
 </html>
 ```
 
-### E01014. (必须包含`charset`属性的`<meta>`元素)
+### E01014. `&lt;meta charset=""&gt;` element required (必须包含`charset`属性的`<meta>`元素)
 
-示例如下：
+Example as below (示例如下)：
 
 ```html
-<meta charset="utf-8">
+<meta charset="utf-8"/>
 ```
 
 ### E01015. (`id`只能是唯一)

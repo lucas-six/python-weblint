@@ -31,22 +31,23 @@ from requests_html import HTML
 Report = namedtuple('Report', ['rule', 'path', 'lineno', 'object'])
 
 
-def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html'):
+def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     '''HTML Parser.'''
 
-    DEPRECATED_TAGS = (
+    DEPRECATED_TAGS = {
         'font', 'center', 's', 'strike', 'b', 'i', 'tt', 'small', 'frame',
         'acronym', 'big', 'u', 'isindex', 'basefont', 'dir', 'applet',
         'style',
-    )
+    }
 
     REQUIRED_TAGS = {
         'html': (
-            ('head', '=', 1),
-            ('body', '=', 1),
+            ('head', '==', 1),
+            ('body', '==', 1),
         ),
         'head': (
-            ('title', '=', 1),
+            ('title', '==', 1),
+            ('meta', '>=', 1),
         ),
     }
 
@@ -81,24 +82,28 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html'):
         'var', 'video'
     }
 
-    DEPRECATED_ATTRS = (
+    DEPRECATED_ATTRS = {
         'style', 'manifest', 'xmlns', 'align', 'alink', 'link', 'vlink',
         'text', 'background', 'bgcolor', 'border', 'char', 'charoff',
         'compact', 'frame', 'frameborder', 'hspace', 'nowrap', 'rules',
         'value', 'valign', 'accept', 'vspace', 'noframes'
-    )
+    }
 
-    GLOBAL_ATTRS = (
+    GLOBAL_ATTRS = {
         'lang', 'id', 'class',
-    )
+    }
+
+    VALID_ATTRS = {
+        'charset',
+    }
 
     REQUIRED_ATTRS = {
         'html': ('lang',),
     }
 
-    NOEMPTY_TAGS = (
-        'title',
-    )
+    NOEMPTY_TAGS = {
+        'title', 'p',
+    }
 
     class _StdHTMLParser(HTMLParser):
         def handle_decl(self, data):
@@ -150,10 +155,6 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html'):
             for a in attrs:
                 name, _ = a
 
-                # attribute name must be lowercase
-                if not name.islower():
-                    pass#self.attr_name_not_lowercase.append((attr_name, self.lineno))
-
                 # validate duplicated attributes
                 c = attrnames.count(name)
                 if c > 1 and (f'{name} {c}', self.lineno) not in self.duplicated_attrs:
@@ -168,8 +169,8 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html'):
         with path.open() as f:
             doc = f.read()
     except FileNotFoundError:
-        return [Report('E00001', path, 0, '')]
-    reports = []
+        return {Report('G00001', path, 0, '')}
+    reports = set()
 
     # validate DOCTYPE, using standard HTML parser since
     # requests-html ignore handling the DOCTYPE
@@ -179,7 +180,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html'):
     std_parser.feed(doc)
     try:
         if std_parser.doctype != doctype:
-            reports.append(Report('E01002', path, lineno, obj))
+            reports.add(Report('HS0002', path, lineno, obj))
             return reports
 
         rules = {
@@ -190,23 +191,24 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html'):
         for a, e in rules.items():
             if hasattr(std_parser, a):
                 for t in getattr(std_parser, a):
-                    reports.append(Report(e, path, t[1], t[0]))
+                    reports.add(Report(e, path, t[1], t[0]))
 
     except AttributeError:
-        reports.append(Report('E01001', path, lineno, obj))
+        reports.add(Report('HS0001', path, lineno, obj))
         return reports
     finally:
         std_parser.close()
 
     parser = HTML(html=doc)
     for element in parser.find():
+        print(element.element.tag)
         lxml_element = element.element
         tag = lxml_element.tag
         lineno = lxml_element.sourceline
         if tag in DEPRECATED_TAGS:
-            reports.append(Report('E01004', path, lineno, tag))
+            reports.add(Report('HS0004', path, lineno, tag))
         elif tag not in CLOSE_TAGS | SELFCLOSED_TAGS:
-            reports.append(Report('E01003', path, lineno, tag))
+            reports.add(Report('HS0003', path, lineno, tag))
         else:
             pass
         
@@ -214,31 +216,47 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html'):
         rules = REQUIRED_TAGS.get(tag)
         if rules is not None:
             for r in rules:
-                if eval(f'len(element.find(r[0])) !{r[1]} r[2]'):
-                    reports.append(Report('E01008', path, lineno, r[0]))
+                if eval(f'not len(element.find(r[0])) {r[1]} r[2]'):
+                    reports.add(Report('E01008', path, lineno, r[0]))
 
         # validate required attributes
         rules = REQUIRED_ATTRS.get(tag)
         if rules is not None:
             for r in rules:
-                if r not in (a.lower() for a in element.attrs):
-                    reports.append(Report('E01009', path, lineno, r))
+                #if r not in (a.lower() for a in element.attrs):
+                #    reports.add(Report('E01009', path, lineno, r))
+                pass
 
         # parse attributes
+        print(element.attrs)
         for a in element.attrs:
             a_lower = a
+
+            # validate attribute name must be in lowercase
+            #print(a)
             if not a.islower():
-                reports.append(Report('E01012', path, lineno, a))
+                reports.add(Report('E01012', path, lineno, a))
                 a_lower = a.lower()
+
             if a_lower in DEPRECATED_ATTRS:
-                reports.append(Report('E01007', path, lineno, a))
-            elif a_lower not in GLOBAL_ATTRS:
-                reports.append(Report('E01006', path, lineno, a))
+                reports.add(Report('E01007', path, lineno, a))
+            elif a_lower not in GLOBAL_ATTRS | VALID_ATTRS:
+                reports.add(Report('E01006', path, lineno, a))                
 
     for t in NOEMPTY_TAGS:
         for e in parser.find(t):
             if not e.text:
-                reports.append(Report('E01013', path, lineno, e.element.tag))
+                reports.add(Report('E01013', path, e.element.sourceline, e.element.tag))
+
+    # <meta charset=""> element required one time
+    found = 0
+    for e in parser.find('meta'):
+        if 'charset' in e.attrs:
+            found += 1
+    if not found:
+        reports.add(Report('E01014', path, 0, 'meta charset'))
+    elif found > 1:
+        reports.add(Report('E01010', path, 0, f'meta charset {found}'))
 
     return reports
 
@@ -248,17 +266,17 @@ def main():
     parser.add_argument('source', metavar='F', type=str, nargs='+',
                     help='directory or source HTML/CSS/JavaScript file')
 
-    reports = []
+    reports = set()
     n = 0
     for path in parser.parse_args().source:
         path = pathlib.Path(path)
 
         if not path.exists():
-            reports.append(Report('E00001', path, 0, ''))
+            reports.add(Report('G00001', path, 0, ''))
 
         elif path.is_file():
             n += 1
-            reports.extend(_weblint_onefile(path))
+            reports |= _weblint_onefile(path)
 
         elif path.is_dir():
             for sub in chain(
@@ -275,7 +293,7 @@ def _debug(msg: str):
         print(msg)
 
 
-def _weblint_onefile(path: pathlib.Path) -> list:
+def _weblint_onefile(path: pathlib.Path) -> set:
     assert path.is_file()
 
     # whose suffix must be one of '.html', '.css' and '.js'
