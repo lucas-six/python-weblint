@@ -113,6 +113,9 @@ class WebLintTests(unittest.TestCase):
     def test_HS0026(self):
         self._test('tests/HS0026.html', 'HS0026', 8, 'source')
 
+    def test_HS0027(self):
+        self._test('tests/HS0027.html', 'HS0027', 8, 'controls')
+
     def test_E(self):
         e = ('HS0007', 'HS0012', 'HS0009', 'HS0006', 'HS0004', 'HS0005')
         l = (2, 2, 0, 4, 9, 10)

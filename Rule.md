@@ -362,9 +362,11 @@ Example as below (示例如下)：
 
 ### `HS0024`. `<video>` element must have children of `<source>` element (`<video>`标签必须包含`<source>`子元素)
 
-### `HS0025`. `<source>` element must have `src` and `type` attributes (`<source>`元素必须包含`src`属性)
+### `HS0025`. `<source>` element must have `src` and `type` attributes (`<source>`元素必须包含`src`和`type`属性)
 
 ### `HS0026`. `<audio>` element must have children of `<source>` element (`<audio>`标签必须包含`<source>`子元素)
+
+### `HS0027`. `<video>` element must have `controls` attribute (`<video>`元素必须包含`controls`属性)
 
 ### E01008. required element missing (必须包含特定标签)
 
