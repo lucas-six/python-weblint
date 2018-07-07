@@ -101,6 +101,15 @@ class WebLintTests(unittest.TestCase):
     def test_HS0023(self):
         self._test('tests/HS0023.html', 'HS0023', 8, 'dd')
 
+    def test_HS0024(self):
+        self._test('tests/HS0024.html', 'HS0024', 8, 'source')
+
+    def test_HS0025(self):
+        e = ('HS0025', 'HS0025')
+        l = (9, 9)
+        o = ('src', 'type')
+        self._test('tests/HS0025.html', e, l, o)
+
     def test_E(self):
         e = ('HS0007', 'HS0012', 'HS0009', 'HS0006', 'HS0004', 'HS0005')
         l = (2, 2, 0, 4, 9, 10)

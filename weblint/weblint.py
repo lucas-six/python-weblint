@@ -62,11 +62,14 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
             (('dt', '>=', 1), 'HS0022'),
             (('dd', '>=', 1), 'HS0023'),
         ),
+        'video': (
+            (('source', '>=', 1), 'HS0024'),
+        ),
     }
 
     SELFCLOSED_TAGS = {
         'area', 'base', 'br', 'embed', 'hr', 'iframe', 'input', 'img', 'keygen',
-        'link', 'meta', 'output', 'param', 'track', 'wbr'
+        'link', 'meta', 'output', 'param', 'track', 'wbr', 'source',
     }
 
     CLOSE_TAGS = {
@@ -87,7 +90,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'p', 'picture', 'pre', 'progress',
         'q',
         'rb', 'rp', 'rt', 'rtc', 'ruby',
-        'samp', 'script', 'section', 'select', 'source', 'span', 'strong',
+        'samp', 'script', 'section', 'select', 'span', 'strong',
             'sub', 'sup',
         'table', 'textarea', 'tbody', 'td', 'template', 'th', 'thead', 'time',
             'title', 'tfoot', 'tr',
@@ -107,11 +110,13 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     }
 
     VALID_ATTRS = {
-        'charset', 'name', 'src', 'content',
+        'charset', 'name', 'src', 'content', 'controls',
     }
 
     REQUIRED_ATTRS = {
         'html': (('lang',), 'HS0012'),
+        'video': (('controls',), 'HS0024'),
+        'source': (('src', 'type'), 'HS0025'),
     }
 
     NOEMPTY_TAGS = {

@@ -360,10 +360,13 @@ Example as below (示例如下)：
 
 ### `HS0023`. `<dl>` element must have children of `<dd>` element (`<dl>`标签必须包含`<dd>`子元素)
 
+### `HS0024`. `<video>` element must have children of `<source>` element (`<video>`标签必须包含`<source>`子元素)
+
+### `HS0025`. `<source>` element must have `src` and `type` attributes (`<source>`元素必须包含`src`属性)
+
 ### E01008. required element missing (必须包含特定标签)
 
 - `<details>`必须包含`<summary>`
-- `<video>`必须包含属性`controls`和`<source>`，且`<source>`必须包含`src`属性
 - `<audio>`必须包含属性`controls`和`<source>`，且`<source>`必须包含`src`属性
 
 ### E01009. required attribute missing (必须包含特定属性)
