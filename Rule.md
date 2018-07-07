@@ -354,9 +354,10 @@ Example as below (示例如下)：
 
 ### `HS0020`. `<ol>` element must have children of `<li>` element (`<ol>`标签只能必须包含`<li>`子元素)
 
+### `HS0021`. `<select>` element must have children of `<option>` element (`<select>`标签只能必须包含`<option>`子元素)
+
 ### E01008. required element missing (必须包含特定标签)
 
-- `<select>`只能且必须包含`<option>`
 - `<dl>`只能且必须包含`<dt>`、`<dd>`
 - `<details>`必须包含`<summary>`
 - `<video>`必须包含属性`controls`和`<source>`，且`<source>`必须包含`src`属性

@@ -55,6 +55,9 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'ol': (
             (('li', '>=', 1), 'HS0020'),
         ),
+        'select': (
+            (('option', '>=', 1), 'HS0021'),
+        ),
     }
 
     SELFCLOSED_TAGS = {
