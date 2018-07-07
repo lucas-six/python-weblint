@@ -52,6 +52,9 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'ul': (
             (('li', '>=', 1), 'HS0019'),
         ),
+        'ol': (
+            (('li', '>=', 1), 'HS0020'),
+        ),
     }
 
     SELFCLOSED_TAGS = {
