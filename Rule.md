@@ -368,6 +368,8 @@ Example as below (示例如下)：
 
 ### `HS0027`. `<video>` element must have `controls` attribute (`<video>`元素必须包含`controls`属性)
 
+### `HS0028`. `<audio>` element must have `controls` attribute (`<audio>`元素必须包含`controls`属性)
+
 ### E01008. required element missing (必须包含特定标签)
 
 - `<details>`必须包含`<summary>`
