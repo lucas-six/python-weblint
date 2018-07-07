@@ -328,7 +328,7 @@ Wrong (错误):
 <title></title>
 ```
 
-## `HS0017`. `<p>` element must **NOT** be empty (`<p>`元素不可为空)
+### `HS0017`. `<p>` element must **NOT** be empty (`<p>`元素不可为空)
 
 Right (正确):
 
@@ -340,6 +340,14 @@ Wrong (错误):
 
 ```html
 <p></p>
+```
+
+### `HS0018`. `<head>` element must have child of `<meta>` element with `charset` attributee (`<head>`元素必须包含`charset`属性的`<meta>`元素)
+
+Example as below (示例如下)：
+
+```html
+<meta charset="utf-8"/>
 ```
 
 ### E01008. required element missing (必须包含特定标签)
@@ -392,14 +400,6 @@ Wrong(错误)：
 - `<output>`必须包含属性`name`、`for`
 - `<meter>`必须包含属性`value`
 - `<progress>`必须包含属性`value`
-
-### E01014. `&lt;meta charset=""&gt;` element required (必须包含`charset`属性的`<meta>`元素)
-
-Example as below (示例如下)：
-
-```html
-<meta charset="utf-8"/>
-```
 
 ### E01015. (`id`只能是唯一)
 

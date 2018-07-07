@@ -94,7 +94,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     }
 
     VALID_ATTRS = {
-        'charset', 'src',
+        'charset', 'name', 'src', 'content',
     }
 
     REQUIRED_ATTRS = {
