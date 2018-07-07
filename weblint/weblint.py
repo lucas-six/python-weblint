@@ -68,6 +68,9 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'audio': (
             (('source', '>=', 1), 'HS0026'),
         ),
+        'details': (
+            (('summary', '==', 1), 'HS0029'),
+        ),
     }
 
     SELFCLOSED_TAGS = {

@@ -370,9 +370,7 @@ Example as below (示例如下)：
 
 ### `HS0028`. `<audio>` element must have `controls` attribute (`<audio>`元素必须包含`controls`属性)
 
-### E01008. required element missing (必须包含特定标签)
-
-- `<details>`必须包含`<summary>`
+### `HS0029`. `<details>` element must have child of `<summary>` element (`<details>`标签必须包含`<summary>`子元素)
 
 ### E01009. required attribute missing (必须包含特定属性)
 
