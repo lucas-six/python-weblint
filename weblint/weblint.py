@@ -112,11 +112,11 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     }
 
     GLOBAL_ATTRS = {
-        'lang', 'id', 'class',
+        'lang', 'id', 'class', 'title',
     }
 
     VALID_ATTRS = {
-        'charset', 'name', 'src', 'content', 'controls', 'type',
+        'charset', 'name', 'src', 'content', 'controls', 'type', 'href',
     }
 
     REQUIRED_ATTRS = {
@@ -124,12 +124,14 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'video': (('controls',), 'HS0027'),
         'source': (('src', 'type'), 'HS0025'),
         'audio': (('controls',), 'HS0028'),
+        'a': (('href',), 'HS0031'),
     }
 
     NOEMPTY_TAGS = {
         ('title', 'HS0016'),
         ('p', 'HS0017'),
         ('summary', 'HS0030'),
+        ('a', 'HS0032'),
     }
 
     class _StdHTMLParser(HTMLParser):

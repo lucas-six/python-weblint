@@ -374,6 +374,10 @@ Example as below (示例如下)：
 
 ### `HS0030`. `<summary>` element must **NOT** be empty (`<summary>`元素不可为空)
 
+### `HS0031`. `<a>` element must have `href` atrribute (`<a>`标签必须包含`href`属性)
+
+### `HS0032`. `<a>` element must **NOT** be empty (`<a>`元素不可为空)
+
 ### E01009. required attribute missing (必须包含特定属性)
 
 - `<link>`元素必须属性是`src`、`rel`
