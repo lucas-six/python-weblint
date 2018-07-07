@@ -49,11 +49,33 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
             (('title', '==', 1), 'HS0015'),
             (('meta', '>=', 1), 'HS0018'),
         ),
+        'ul': (
+            (('li', '>=', 1), 'HS0019'),
+        ),
+        'ol': (
+            (('li', '>=', 1), 'HS0020'),
+        ),
+        'select': (
+            (('option', '>=', 1), 'HS0021'),
+        ),
+        'dl': (
+            (('dt', '>=', 1), 'HS0022'),
+            (('dd', '>=', 1), 'HS0023'),
+        ),
+        'video': (
+            (('source', '>=', 1), 'HS0024'),
+        ),
+        'audio': (
+            (('source', '>=', 1), 'HS0026'),
+        ),
+        'details': (
+            (('summary', '==', 1), 'HS0029'),
+        ),
     }
 
     SELFCLOSED_TAGS = {
         'area', 'base', 'br', 'embed', 'hr', 'iframe', 'input', 'img', 'keygen',
-        'link', 'meta', 'output', 'param', 'track', 'wbr'
+        'link', 'meta', 'output', 'param', 'track', 'wbr', 'source',
     }
 
     CLOSE_TAGS = {
@@ -74,8 +96,8 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'p', 'picture', 'pre', 'progress',
         'q',
         'rb', 'rp', 'rt', 'rtc', 'ruby',
-        'samp', 'script', 'section', 'select', 'source', 'span', 'strong',
-            'sub', 'sup',
+        'samp', 'script', 'section', 'select', 'span', 'strong',
+            'sub',  'summary', 'sup',
         'table', 'textarea', 'tbody', 'td', 'template', 'th', 'thead', 'time',
             'title', 'tfoot', 'tr',
         'ul',
@@ -90,19 +112,35 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     }
 
     GLOBAL_ATTRS = {
-        'lang', 'id', 'class',
+        'lang', 'id', 'class', 'title',
     }
 
     VALID_ATTRS = {
-        'charset', 'src',
+        'charset', 'name', 'src', 'content', 'controls', 'type', 'href', 'alt',
+    }
+
+    BOOL_ATTRS = {
+        'controls',
     }
 
     REQUIRED_ATTRS = {
         'html': (('lang',), 'HS0012'),
+        'video': (('controls',), 'HS0027'),
+        'source': (('src', 'type'), 'HS0025'),
+        'audio': (('controls',), 'HS0028'),
+        'a': (('href',), 'HS0031'),
+        'img': (('src',), 'HS0033'),
+    }
+
+    REQUIRED_ATTRS_ACCESS = {
+        'img': (('alt',), 'HA0001'),
     }
 
     NOEMPTY_TAGS = {
-        'title', 'p',
+        ('title', 'HS0016'),
+        ('p', 'HS0017'),
+        ('summary', 'HS0030'),
+        ('a', 'HS0032'),
     }
 
     class _StdHTMLParser(HTMLParser):
@@ -229,8 +267,15 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
                 if r not in (a.lower() for a in element.attrs):
                     reports.add(Report(rules[1], path, lineno, r))
 
+        # validate accessibility attributes
+        rules = REQUIRED_ATTRS_ACCESS.get(tag)
+        if rules is not None:
+            for r in rules[0]:
+                if r not in (a.lower() for a in element.attrs):
+                    reports.add(Report(rules[1], path, lineno, r))
+
         # parse attributes
-        for a in element.attrs:
+        for a, v in element.attrs.items():
             a_lower = a
 
             # validate attribute name must be in lowercase
@@ -241,12 +286,16 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
             if a_lower in DEPRECATED_ATTRS:
                 reports.add(Report('HS0008', path, lineno, a))
             elif a_lower not in GLOBAL_ATTRS | VALID_ATTRS:
-                reports.add(Report('HS0007', path, lineno, a))                
+                reports.add(Report('HS0007', path, lineno, a))
+            
+            # validate attribute's value is NOT empty
+            if not v and a_lower not in BOOL_ATTRS:
+                reports.add(Report('HS0034', path, lineno, a))
 
     for t in NOEMPTY_TAGS:
-        for e in parser.find(t):
+        for e in parser.find(t[0]):
             if not e.text:
-                reports.add(Report('E01013', path, e.element.sourceline, e.element.tag))
+                reports.add(Report(t[1], path, e.element.sourceline, e.element.tag))
 
     # <meta charset=""> element required one time
     found = 0

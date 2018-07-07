@@ -14,7 +14,16 @@ class WebLintTests(unittest.TestCase):
 
     def _test(self, fname, exxx, lineno, obj):
         path = pathlib.Path(fname)
-        expected = {weblint.Report(exxx, path, lineno, obj)}
+        if isinstance(exxx, str):
+            expected = {weblint.Report(exxx, path, lineno, obj)}
+        else:
+            assert isinstance(exxx, tuple)
+            assert isinstance(lineno, tuple)
+            assert isinstance(obj, tuple)
+
+            expected = set()
+            for e, l, o in zip(exxx, lineno, obj):
+                expected.add(weblint.Report(e, path, l, o))
         self.assertSetEqual(weblint.htmlparser(path), expected)
 
     def testG00001(self):
@@ -57,21 +66,82 @@ class WebLintTests(unittest.TestCase):
         self._test('tests/HS0012.html', 'HS0012', 2, 'lang')
 
     def test_HS0013(self):
-        path = pathlib.Path('tests/HS0013.html')
-        expected = {
-            weblint.Report('HS0013', path, 2, 'head'),
-            weblint.Report('HS0018', path, 0, 'meta charset')}
-        self.assertSetEqual(weblint.htmlparser(path), expected)
+        exxx = ('HS0013', 'HS0018')
+        lineno = (2, 0)
+        obj = ('head', 'meta charset')
+        self._test('tests/HS0013.html', exxx, lineno, obj)
 
     def test_HS0014(self):
         self._test('tests/HS0014.html', 'HS0014', 2, 'body')
 
-    # def test_E01008(self):
-    #     self._test('tests/E01008.html', 'E01008', 3, 'title')
+    def test_HS0015(self):
+        self._test('tests/HS0015.html', 'HS0015', 3, 'title')
 
-    # def test_E01013(self):
-    #     path = pathlib.Path('tests/E01013.html')
-    #     expected = {
-    #         weblint.Report('E01013', path, 5, 'title'),
-    #         weblint.Report('E01013', path, 8, 'p')}
-    #     self.assertSetEqual(weblint.htmlparser(path), expected)
+    def test_HS0016(self):
+        self._test('tests/HS0016.html', 'HS0016', 5, 'title')
+
+    def test_HS0017(self):
+        self._test('tests/HS0017.html', 'HS0017', 8, 'p')
+
+    def test_HS0018(self):
+        self._test('tests/HS0018.html', 'HS0018', 0, 'meta charset')
+
+    def test_HS0019(self):
+        self._test('tests/HS0019.html', 'HS0019', 8, 'li')
+
+    def test_HS0020(self):
+        self._test('tests/HS0020.html', 'HS0020', 8, 'li')
+
+    def test_HS0021(self):
+        self._test('tests/HS0021.html', 'HS0021', 8, 'option')
+
+    def test_HS0022(self):
+        self._test('tests/HS0022.html', 'HS0022', 8, 'dt')
+
+    def test_HS0023(self):
+        self._test('tests/HS0023.html', 'HS0023', 8, 'dd')
+
+    def test_HS0024(self):
+        self._test('tests/HS0024.html', 'HS0024', 8, 'source')
+
+    def test_HS0025(self):
+        e = ('HS0025', 'HS0025')
+        l = (9, 9)
+        o = ('src', 'type')
+        self._test('tests/HS0025.html', e, l, o)
+
+    def test_HS0026(self):
+        self._test('tests/HS0026.html', 'HS0026', 8, 'source')
+
+    def test_HS0027(self):
+        self._test('tests/HS0027.html', 'HS0027', 8, 'controls')
+
+    def test_HS0028(self):
+        self._test('tests/HS0028.html', 'HS0028', 8, 'controls')
+
+    def test_HS0029(self):
+        self._test('tests/HS0029.html', 'HS0029', 8, 'summary')
+
+    def test_HS0030(self):
+        self._test('tests/HS0030.html', 'HS0030', 9, 'summary')
+
+    def test_HS0031(self):
+        self._test('tests/HS0031.html', 'HS0031', 8, 'href')
+
+    def test_HS0032(self):
+        self._test('tests/HS0032.html', 'HS0032', 8, 'a')
+
+    def test_HS0033(self):
+        self._test('tests/HS0033.html', 'HS0033', 8, 'src')
+
+    def test_HS0034(self):
+        self._test('tests/HS0034.html', 'HS0034', 4, 'charset')
+
+    def test_HA0001(self):
+        self._test('tests/HA0001.html', 'HA0001', 8, 'alt')
+
+    def test_E(self):
+        e = ('HS0007', 'HS0012', 'HS0009', 'HS0006', 'HS0004', 'HS0005')
+        l = (2, 2, 0, 4, 9, 10)
+        o = ('lang2', 'lang', 'meta charset 2', 'meta', 'font', 'body')
+        self._test('tests/E.html', e, l, o)
