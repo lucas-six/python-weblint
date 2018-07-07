@@ -116,7 +116,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     }
 
     VALID_ATTRS = {
-        'charset', 'name', 'src', 'content', 'controls', 'type', 'href',
+        'charset', 'name', 'src', 'content', 'controls', 'type', 'href', 'alt',
     }
 
     REQUIRED_ATTRS = {
@@ -126,6 +126,10 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'audio': (('controls',), 'HS0028'),
         'a': (('href',), 'HS0031'),
         'img': (('src',), 'HS0033'),
+    }
+
+    REQUIRED_ATTRS_ACCESS = {
+        'img': (('alt',), 'HA0001'),
     }
 
     NOEMPTY_TAGS = {
@@ -254,6 +258,13 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
 
         # validate required attributes
         rules = REQUIRED_ATTRS.get(tag)
+        if rules is not None:
+            for r in rules[0]:
+                if r not in (a.lower() for a in element.attrs):
+                    reports.add(Report(rules[1], path, lineno, r))
+
+        # validate accessibility attributes
+        rules = REQUIRED_ATTRS_ACCESS.get(tag)
         if rules is not None:
             for r in rules[0]:
                 if r not in (a.lower() for a in element.attrs):

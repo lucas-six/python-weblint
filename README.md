@@ -28,6 +28,8 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 
 ### HTML
 
+#### Specification (规范)
+
 - **HS0001**. DOCTYPE must be decalred first (文档类型必须首先声明)
 - **HS0002**. DOCTYPE for HTML5 should be `<DOCTYPE html>` (HTML5的文档类型必须是`<DOCTYPE html>`)
 - **HS0003**. invalid tag must **NOT** be used (不可使用非法标签)
@@ -61,6 +63,11 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 - **HS0031**. `<a>` element must have `href` atrribute (`<a>`标签必须包含`href`属性)
 - **HS0032**. `<a>` element must **NOT** be empty (`<a>`元素不可为空)
 - **HS0033**. `<img>` element must have `src` atrribute (`<img>`标签必须包含`src`属性)
+
+#### Accessibility (可用性)
+
+- **HA0001**. `<img>` element must have `alt` atrribute (`<img>`标签必须包含`alt`属性)
+
 - E01015. (`id`只能是唯一)
 - E01016. (`<h1>`只能出现一次)
 - E01017. (不能包含特定标签)
