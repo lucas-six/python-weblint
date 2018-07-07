@@ -350,40 +350,16 @@ Example as below (示例如下)：
 <meta charset="utf-8"/>
 ```
 
+### `HS0019`. `<ul>` element must have children of `<li>` element (`<ul>`标签只能必须包含`<li>`子元素)
+
 ### E01008. required element missing (必须包含特定标签)
 
 - `<select>`只能且必须包含`<option>`
-- `<ul>`只能且必须包含`<li>`
 - `<ol>`只能且必须包含`<li>`
 - `<dl>`只能且必须包含`<dt>`、`<dd>`
 - `<details>`必须包含`<summary>`
 - `<video>`必须包含属性`controls`和`<source>`，且`<source>`必须包含`src`属性
 - `<audio>`必须包含属性`controls`和`<source>`，且`<source>`必须包含`src`属性
-
-Right(正确)：
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-  </body>
-</html>
-```
-
-Wrong(错误)：
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-  </head>
-  <body>
-  </body>
-</html>
-```
 
 ### E01009. required attribute missing (必须包含特定属性)
 
