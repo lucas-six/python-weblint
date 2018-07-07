@@ -65,6 +65,9 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'video': (
             (('source', '>=', 1), 'HS0024'),
         ),
+        'audio': (
+            (('source', '>=', 1), 'HS0026'),
+        ),
     }
 
     SELFCLOSED_TAGS = {
@@ -117,6 +120,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'html': (('lang',), 'HS0012'),
         'video': (('controls',), 'HS0024'),
         'source': (('src', 'type'), 'HS0025'),
+        'audio': (('controls',), 'HS0026'),
     }
 
     NOEMPTY_TAGS = {
