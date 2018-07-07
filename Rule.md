@@ -328,6 +328,20 @@ Wrong (错误):
 <title></title>
 ```
 
+## `HS0017`. `<p>` element must **NOT** be empty (`<p>`元素不可为空)
+
+Right (正确):
+
+```html
+<p>Paragraph...</p>
+```
+
+Wrong (错误):
+
+```html
+<p></p>
+```
+
 ### E01008. required element missing (必须包含特定标签)
 
 - `<select>`只能且必须包含`<option>`
@@ -378,35 +392,6 @@ Wrong(错误)：
 - `<output>`必须包含属性`name`、`for`
 - `<meter>`必须包含属性`value`
 - `<progress>`必须包含属性`value`
-
-### E01013. `&lt;title&gt;`, `&lt;p&gt;` element must not be empty (`&lt;title&gt;`, `&lt;p&gt;`标签不可为空)
-
-Right(正确)：
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Page Title</title>
-  </head>
-  <body>
-  </body>
-</html>
-```
-
-Wrong(错误)：
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title></title>
-  </head>
-  <body>
-    <p></p>
-  </body>
-</html>
-```
 
 ### E01014. `&lt;meta charset=""&gt;` element required (必须包含`charset`属性的`<meta>`元素)
 

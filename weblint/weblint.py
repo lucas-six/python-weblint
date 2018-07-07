@@ -102,7 +102,8 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     }
 
     NOEMPTY_TAGS = {
-        'title', 'p',
+        ('title', 'HS0016'),
+        ('p', 'HS0017'),
     }
 
     class _StdHTMLParser(HTMLParser):
@@ -244,9 +245,9 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
                 reports.add(Report('HS0007', path, lineno, a))                
 
     for t in NOEMPTY_TAGS:
-        for e in parser.find(t):
+        for e in parser.find(t[0]):
             if not e.text:
-                reports.add(Report('HS0016', path, e.element.sourceline, e.element.tag))
+                reports.add(Report(t[1], path, e.element.sourceline, e.element.tag))
 
     # <meta charset=""> element required one time
     found = 0
