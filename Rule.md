@@ -312,6 +312,8 @@ Wrong(错误)：
 </html>
 ```
 
+### HS0015. `<head>` element must have child of `<title>` element (`<head>`标签必须包含`<title>`子元素)
+
 ### E01008. required element missing (必须包含特定标签)
 
 - `<select>`只能且必须包含`<option>`

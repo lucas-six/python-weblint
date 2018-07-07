@@ -14,7 +14,16 @@ class WebLintTests(unittest.TestCase):
 
     def _test(self, fname, exxx, lineno, obj):
         path = pathlib.Path(fname)
-        expected = {weblint.Report(exxx, path, lineno, obj)}
+        if isinstance(exxx, str):
+            expected = {weblint.Report(exxx, path, lineno, obj)}
+        else:
+            assert isinstance(exxx, tuple)
+            assert isinstance(lineno, tuple)
+            assert isinstance(obj, tuple)
+
+            expected = set()
+            for e, l, o in zip(exxx, lineno, obj):
+                expected.add(weblint.Report(e, path, l, o))
         self.assertSetEqual(weblint.htmlparser(path), expected)
 
     def testG00001(self):
@@ -57,17 +66,16 @@ class WebLintTests(unittest.TestCase):
         self._test('tests/HS0012.html', 'HS0012', 2, 'lang')
 
     def test_HS0013(self):
-        path = pathlib.Path('tests/HS0013.html')
-        expected = {
-            weblint.Report('HS0013', path, 2, 'head'),
-            weblint.Report('HS0018', path, 0, 'meta charset')}
-        self.assertSetEqual(weblint.htmlparser(path), expected)
+        exxx = ('HS0013', 'HS0018')
+        lineno = (2, 0)
+        obj = ('head', 'meta charset')
+        self._test('tests/HS0013.html', exxx, lineno, obj)
 
     def test_HS0014(self):
         self._test('tests/HS0014.html', 'HS0014', 2, 'body')
 
-    # def test_E01008(self):
-    #     self._test('tests/E01008.html', 'E01008', 3, 'title')
+    def test_HS0015(self):
+        self._test('tests/HS0015.html', 'HS0015', 3, 'title')
 
     # def test_E01013(self):
     #     path = pathlib.Path('tests/E01013.html')
