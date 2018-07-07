@@ -82,3 +82,9 @@ class WebLintTests(unittest.TestCase):
 
     def test_HS0017(self):
         self._test('tests/HS0017.html', 'HS0017', 8, 'p')
+
+    def test_E(self):
+        e = ('HS0007', 'HS0012', 'HS0009', 'HS0006', 'HS0004', 'HS0005')
+        l = (2, 2, 0, 4, 9, 10)
+        o = ('lang2', 'lang', 'meta charset 2', 'meta', 'font', 'body')
+        self._test('tests/E.html', e, l, o)
