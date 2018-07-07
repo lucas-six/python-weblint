@@ -97,7 +97,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'q',
         'rb', 'rp', 'rt', 'rtc', 'ruby',
         'samp', 'script', 'section', 'select', 'span', 'strong',
-            'sub', 'sup',
+            'sub',  'summary', 'sup',
         'table', 'textarea', 'tbody', 'td', 'template', 'th', 'thead', 'time',
             'title', 'tfoot', 'tr',
         'ul',
@@ -129,6 +129,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     NOEMPTY_TAGS = {
         ('title', 'HS0016'),
         ('p', 'HS0017'),
+        ('summary', 'HS0030'),
     }
 
     class _StdHTMLParser(HTMLParser):
