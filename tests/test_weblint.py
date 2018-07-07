@@ -77,9 +77,5 @@ class WebLintTests(unittest.TestCase):
     def test_HS0015(self):
         self._test('tests/HS0015.html', 'HS0015', 3, 'title')
 
-    # def test_E01013(self):
-    #     path = pathlib.Path('tests/E01013.html')
-    #     expected = {
-    #         weblint.Report('E01013', path, 5, 'title'),
-    #         weblint.Report('E01013', path, 8, 'p')}
-    #     self.assertSetEqual(weblint.htmlparser(path), expected)
+    def test_HS0016(self):
+        self._test('tests/HS0016.html', 'HS0016', 5, 'title')

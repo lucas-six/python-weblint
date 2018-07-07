@@ -312,7 +312,21 @@ Wrong(错误)：
 </html>
 ```
 
-### HS0015. `<head>` element must have child of `<title>` element (`<head>`标签必须包含`<title>`子元素)
+### `HS0015`. `<head>` element must have child of `<title>` element (`<head>`标签必须包含`<title>`子元素)
+
+### `HS0016`. `<title>` element must **NOT** be empty (`<title>`元素不可为空)
+
+Right (正确):
+
+```html
+<title>Page Title</title>
+```
+
+Wrong (错误):
+
+```html
+<title></title>
+```
 
 ### E01008. required element missing (必须包含特定标签)
 
