@@ -119,6 +119,10 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'charset', 'name', 'src', 'content', 'controls', 'type', 'href', 'alt',
     }
 
+    BOOL_ATTRS = {
+        'controls',
+    }
+
     REQUIRED_ATTRS = {
         'html': (('lang',), 'HS0012'),
         'video': (('controls',), 'HS0027'),
@@ -271,7 +275,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
                     reports.add(Report(rules[1], path, lineno, r))
 
         # parse attributes
-        for a in element.attrs:
+        for a, v in element.attrs.items():
             a_lower = a
 
             # validate attribute name must be in lowercase
@@ -282,7 +286,11 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
             if a_lower in DEPRECATED_ATTRS:
                 reports.add(Report('HS0008', path, lineno, a))
             elif a_lower not in GLOBAL_ATTRS | VALID_ATTRS:
-                reports.add(Report('HS0007', path, lineno, a))                
+                reports.add(Report('HS0007', path, lineno, a))
+            
+            # validate attribute's value is NOT empty
+            if not v and a_lower not in BOOL_ATTRS:
+                reports.add(Report('HS0034', path, lineno, a))
 
     for t in NOEMPTY_TAGS:
         for e in parser.find(t[0]):

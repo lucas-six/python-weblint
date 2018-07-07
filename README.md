@@ -63,6 +63,7 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 - **HS0031**. `<a>` element must have `href` atrribute (`<a>`标签必须包含`href`属性)
 - **HS0032**. `<a>` element must **NOT** be empty (`<a>`元素不可为空)
 - **HS0033**. `<img>` element must have `src` atrribute (`<img>`标签必须包含`src`属性)
+- **HS0034**. non-boolean value of attribute must **NOT** be empty (非布尔值的属性值不能为空)
 
 #### Accessibility (可用性)
 

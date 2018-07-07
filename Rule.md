@@ -382,6 +382,8 @@ Example as below (示例如下)：
 
 #### `HS0033`. `<img>` element must have `src` atrribute (`<img>`标签必须包含`src`属性)
 
+#### `HS0034`. non-boolean value of attribute must **NOT** be empty (非布尔值的属性值不能为空)
+
 ### Accessibility (可用性)
 
 #### `HA0001`. `<img>` element must have `alt` atrribute (`<img>`标签必须包含`alt`属性)
