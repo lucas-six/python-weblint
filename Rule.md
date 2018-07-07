@@ -388,6 +388,15 @@ Example as below (示例如下)：
 
 #### `HA0001`. `<img>` element must have `alt` atrribute (`<img>`标签必须包含`alt`属性)
 
+#### `HA0002`. `<video>` element must **NOT** be empty (`<video>`元素不可为空)
+
+```html
+<video controls>
+  <source src="example.ogg" type="video/ogg"/>
+  Your browser does not support the &lt;video&gt; element.
+</video>
+```
+
 ---
 
 ### E01009. required attribute missing (必须包含特定属性)

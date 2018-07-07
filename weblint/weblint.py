@@ -141,6 +141,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         ('p', 'HS0017'),
         ('summary', 'HS0030'),
         ('a', 'HS0032'),
+        ('video', 'HA0002'),
     }
 
     class _StdHTMLParser(HTMLParser):

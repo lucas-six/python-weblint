@@ -69,6 +69,8 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 
 - **HA0001**. `<img>` element must have `alt` atrribute (`<img>`标签必须包含`alt`属性)
 
+- **HA0002**. `<video>` element must **NOT** be empty (`<video>`元素不可为空)
+
 - E01015. (`id`只能是唯一)
 - E01016. (`<h1>`只能出现一次)
 - E01017. (不能包含特定标签)
