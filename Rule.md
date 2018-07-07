@@ -378,10 +378,11 @@ Example as below (示例如下)：
 
 ### `HS0032`. `<a>` element must **NOT** be empty (`<a>`元素不可为空)
 
+### `HS0033`. `<img>` element must have `src` atrribute (`<img>`标签必须包含`src`属性)
+
 ### E01009. required attribute missing (必须包含特定属性)
 
 - `<link>`元素必须属性是`src`、`rel`
-- `<a>`必须包含属性`href`
 - `<img>`必须包含属性`src`、`alt`
 - `<input>`必须包含属性`type`
 - `<iframe>`必须包含属性`src`

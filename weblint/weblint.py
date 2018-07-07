@@ -125,6 +125,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'source': (('src', 'type'), 'HS0025'),
         'audio': (('controls',), 'HS0028'),
         'a': (('href',), 'HS0031'),
+        'img': (('src',), 'HS0033'),
     }
 
     NOEMPTY_TAGS = {
