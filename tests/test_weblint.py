@@ -168,10 +168,10 @@ class WebLintTests(unittest.TestCase):
         self._test('tests/HS0041.html', 'HS0041', 6, 'type')
 
     def test_HS0042(self):
-        self._test('tests/HS0042.html', 'HS0042', 6, 'src')
+        self._test('tests/HS0042.html', 'HS0042', 8, 'src')
 
     def test_HS0043(self):
-        self._test('tests/HS0043.html', 'HS0043', 6, 'type')
+        self._test('tests/HS0043.html', 'HS0043', 8, 'type')
 
     def test_HA0001(self):
         self._test('tests/HA0001.html', 'HA0001', 8, 'alt')
@@ -190,6 +190,9 @@ class WebLintTests(unittest.TestCase):
 
     def test_HA0006(self):
         self._test('tests/HA0006.html', 'HA0006', 8, 'main')
+
+    def test_HP0001(self):
+        self._test('tests/HP0001.html', 'HP0001', 3, 'script')
 
     def test_E(self):
         e = ('HS0007', 'HS0012', 'HS0009', 'HS0009', 'HS0006', 'HS0004',

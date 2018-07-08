@@ -48,6 +48,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'head': (
             (('title', '==', 1), 'HS0015'),
             (('meta', '>=', 1), 'HS0018'),
+            (('script', '==', 0), 'HP0001'),
         ),
         'ul': (
             (('li', '>=', 1), 'HS0019'),
