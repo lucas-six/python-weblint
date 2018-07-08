@@ -444,13 +444,13 @@ Example as below (示例如下)：
 正确：
 
 ```html
-<link src="css/style.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet"/>
 ```
 
 错误：
 
 ```html
-<link src="css/style.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css"/>
 ```
 
 ## Accessibility (可用性)

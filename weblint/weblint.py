@@ -135,7 +135,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'a': (('href',), 'HS0031'),
         'img': (('src',), 'HS0033'),
         'input': (('type',), 'HS0035'),
-        'link': (('src', 'rel'), 'HS0040'),
+        'link': (('rel', 'href'), 'HS0040'),
     }
 
     REQUIRED_ATTRS_ACCESS = {
@@ -348,6 +348,14 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
             reports.add(Report('HS0039', path, e.element.sourceline, 'src'))
         if 'alt' not in e.attrs:
             reports.add(Report('HA0005', path, e.element.sourceline, 'alt'))
+
+    # <link> element must **NOT** have `type` attribute with value of `text/css`
+    for e in parser.find('link[rel=stylesheet]'):
+        assert 'href' in e.attrs
+        if e.attrs['href'].endswith('css'):
+            if 'type' in e.attrs and e.attrs['type'] == 'text/css':
+                l = e.element.sourceline
+                reports.add(Report('HS0041', path, l, 'type'))
 
     return reports
 
