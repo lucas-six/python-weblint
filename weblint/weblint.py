@@ -112,7 +112,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     }
 
     GLOBAL_ATTRS = {
-        'lang', 'id', 'class', 'title',
+        'lang', 'id', 'class', 'title', 'hidden',
     }
 
     VALID_ATTRS = {
@@ -120,7 +120,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     }
 
     BOOL_ATTRS = {
-        'controls',
+        'controls', 'hidden',
     }
 
     REQUIRED_ATTRS = {
@@ -313,20 +313,35 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
             if not e.text:
                 reports.add(Report(t[1], path, e.element.sourceline, e.element.tag))
 
-    # `<h1>` element must present only once
-    e = parser.find('h1')
-    if len(e) > 1:
-        reports.add(Report('HA0004', path, e[-1].element.sourceline, e[-1].element.tag))
+    # `<h1>` element must be present only once
+    h1_list = parser.find('h1')
+    if len(h1_list) > 1:
+        e = h1_list[-1]
+        e = e.element
+        reports.add(Report('HA0004', path, e.sourceline, e.tag))
 
-    # <meta charset=""> element required one time
-    found = 0
+    # <main> element without "hidden" atribute must be present only once
+    main_list = parser.find('main')
+    main_count = len(main_list)
+    main_hidden_count = 0
+    if main_count > 1:
+        for m in main_list:
+            if 'hidden' in m.attrs:
+                main_hidden_count += 1
+        if main_count - main_hidden_count != 1:
+            e = main_list[-1]
+            e = e.element
+            reports.add(Report('HS0038', path, e.sourceline, e.tag))
+
+    # <meta> element with "charset" attribute must be present only once
+    meta_charset_count = 0
     for e in parser.find('meta'):
         if 'charset' in e.attrs:
-            found += 1
-    if not found:
+            meta_charset_count += 1
+    if not meta_charset_count:
         reports.add(Report('HS0018', path, 0, 'meta charset'))
-    elif found > 1:
-        reports.add(Report('HS0009', path, 0, f'meta charset {found}'))
+    elif meta_charset_count > 1:
+        reports.add(Report('HS0009', path, 0, f'meta charset {meta_charset_count}'))
 
     return reports
 

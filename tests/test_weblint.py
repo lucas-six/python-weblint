@@ -149,6 +149,9 @@ class WebLintTests(unittest.TestCase):
     def test_HS0037(self):
         self._test('tests/HS0037.html', 'HS0037', 9, 'id="id1"')
 
+    def test_HS0038(self):
+        self._test('tests/HS0038.html', 'HS0038', 9, 'main')
+
     def test_HA0001(self):
         self._test('tests/HA0001.html', 'HA0001', 8, 'alt')
 
