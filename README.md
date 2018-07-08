@@ -68,6 +68,7 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 - **HS0036**. `<h1>`~`<h6>` element must **NOT** be empty (`<h1>`~`<h6>`元素不可为空)
 - **HS0037**. `id` attribute value must be **unique** (`id`属性值必须**唯一**)
 - **HS0038**. `<main>` element without `hidden` attribute must be present only **once** (不带`hidden`属性的`<main>`只能出现**一次**)
+- **HS0039**. `<input>` element with `type` attribute's value is `image` must have `src` attribute (`type`属性为`image`的`<input>`必须包含`src`属性)
 
 #### Accessibility (可用性)
 
@@ -76,6 +77,5 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 - **HA0003**. `<audio>` element must **NOT** be empty (`<audio>`元素不可为空)
 - **HA0004**. `<h1>` element must be present only **once** (`<h1>`元素只能出现**一次**)
 
-- E01017. (不能包含特定标签)
 - E01019. (`<script>`不能有`type="text/javascript"`属性)
 - E01020. (`<link>`不能有`type="text/css"`属性)

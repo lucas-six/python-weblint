@@ -435,6 +435,8 @@ Example as below (示例如下)：
 </body>
 ```
 
+### `HS0039`. `<input>` element with `type` attribute's value is `image` must have `src` attribute (`type`属性为`image`的`<input>`必须包含`src`属性)
+
 ## Accessibility (可用性)
 
 ### `HA0001`. `<img>` element must have `alt` atrribute (`<img>`标签必须包含`alt`属性)
