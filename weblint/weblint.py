@@ -119,7 +119,8 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     }
 
     VALID_ATTRS = {
-        'charset', 'name', 'src', 'content', 'controls', 'type', 'href', 'alt',
+        'charset', 'name', 'src', 'content', 'controls', 'type', 'href',
+        'alt', 'rel',
     }
 
     BOOL_ATTRS = {
@@ -134,6 +135,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'a': (('href',), 'HS0031'),
         'img': (('src',), 'HS0033'),
         'input': (('type',), 'HS0035'),
+        'link': (('src', 'rel'), 'HS0040'),
     }
 
     REQUIRED_ATTRS_ACCESS = {
