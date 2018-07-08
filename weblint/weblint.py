@@ -324,8 +324,8 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     main_count = len(main_list)
     main_hidden_count = len(parser.find('main[hidden]'))
     if main_count - main_hidden_count != 1:
-        for m in main_list:
-            reports.add(Report('HS0038', path, m.element.sourceline, 'main'))
+        for e in main_list:
+            reports.add(Report('HS0038', path, e.element.sourceline, 'main'))
 
     # <meta> element with "charset" attribute must be present only once
     meta_charset_list = parser.find('meta[charset]')
@@ -333,9 +333,14 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     if not meta_charset_count:
         reports.add(Report('HS0018', path, 0, 'meta charset'))
     elif meta_charset_count > 1:
-        for m in meta_charset_list:
+        for e in meta_charset_list:
             obj = f'meta charset {meta_charset_count}'
-            reports.add(Report('HS0009', path, m.element.sourceline, obj))
+            reports.add(Report('HS0009', path, e.element.sourceline, obj))
+
+    # <input> element with "type=image" must have "src" atrribute
+    for e in parser.find('input[type=image]'):
+        if 'src' not in e.attrs:
+            reports.add(Report('HS0039', path, e.element.sourceline, 'src'))
 
     return reports
 
