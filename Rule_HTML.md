@@ -395,6 +395,15 @@ Example as below (示例如下)：
 </video>
 ```
 
+### `HA0003`. `<audio>` element must **NOT** be empty (`<audio>`元素不可为空)
+
+```html
+<audio controls>
+  <source src="example.ogg" type="audio/ogg"/>
+  Your browser does not support the &lt;audio&gt; element.
+</audio>
+```
+
 ---
 
 ### E01009. required attribute missing (必须包含特定属性)
