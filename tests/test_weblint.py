@@ -137,11 +137,67 @@ class WebLintTests(unittest.TestCase):
     def test_HS0034(self):
         self._test('tests/HS0034.html', 'HS0034', 4, 'charset')
 
+    def test_HS0035(self):
+        self._test('tests/HS0035.html', 'HS0035', 8, 'type')
+
+    def test_HS0036(self):
+        e = ('HS0036',) * 6
+        l = tuple(range(8, 14))
+        o = ('h1', 'h2', 'h3', 'h4', 'h5', 'h6')
+        self._test('tests/HS0036.html', e, l, o)
+
+    def test_HS0037(self):
+        self._test('tests/HS0037.html', 'HS0037', 9, 'id="id1"')
+
+    def test_HS0038(self):
+        e = ('HS0038',) * 2
+        l = (8 ,9)
+        o = ('main',) * 2
+        self._test('tests/HS0038.html', e, l, o)
+
+    def test_HS0039(self):
+        self._test('tests/HS0039.html', 'HS0039', 8, 'src')
+
+    def test_HS0040(self):
+        e = ('HS0040',) * 2
+        l = (6,) * 2
+        o = ('rel', 'href')
+        self._test('tests/HS0040.html', e, l, o)
+
+    def test_HS0041(self):
+        self._test('tests/HS0041.html', 'HS0041', 6, 'type')
+
+    def test_HS0042(self):
+        self._test('tests/HS0042.html', 'HS0042', 8, 'src')
+
+    def test_HS0043(self):
+        self._test('tests/HS0043.html', 'HS0043', 8, 'type')
+
     def test_HA0001(self):
         self._test('tests/HA0001.html', 'HA0001', 8, 'alt')
 
+    def test_HA0002(self):
+        self._test('tests/HA0002.html', 'HA0002', 8, 'video')
+
+    def test_HA0003(self):
+        self._test('tests/HA0003.html', 'HA0003', 8, 'audio')
+
+    def test_HA0004(self):
+        self._test('tests/HA0004.html', 'HA0004', 9, 'h1')
+
+    def test_HA0005(self):
+        self._test('tests/HA0005.html', 'HA0005', 8, 'alt')
+
+    def test_HA0006(self):
+        self._test('tests/HA0006.html', 'HA0006', 8, 'main')
+
+    def test_HP0001(self):
+        self._test('tests/HP0001.html', 'HP0001', 3, 'script')
+
     def test_E(self):
-        e = ('HS0007', 'HS0012', 'HS0009', 'HS0006', 'HS0004', 'HS0005')
-        l = (2, 2, 0, 4, 9, 10)
-        o = ('lang2', 'lang', 'meta charset 2', 'meta', 'font', 'body')
+        e = ('HS0007', 'HS0012', 'HS0009', 'HS0009', 'HS0006', 'HS0004',
+                'HS0005')
+        l = (2, 2, 4, 5, 4, 9, 10)
+        o = ('lang2', 'lang', 'meta charset 2', 'meta charset 2',
+                'meta', 'font', 'body')
         self._test('tests/E.html', e, l, o)

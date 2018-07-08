@@ -48,6 +48,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'head': (
             (('title', '==', 1), 'HS0015'),
             (('meta', '>=', 1), 'HS0018'),
+            (('script', '==', 0), 'HP0001'),
         ),
         'ul': (
             (('li', '>=', 1), 'HS0019'),
@@ -70,6 +71,9 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         ),
         'details': (
             (('summary', '==', 1), 'HS0029'),
+        ),
+        'aside': (
+            (('main', '==', 0), 'HA0006'),
         ),
     }
 
@@ -112,15 +116,16 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     }
 
     GLOBAL_ATTRS = {
-        'lang', 'id', 'class', 'title',
+        'lang', 'id', 'class', 'title', 'hidden',
     }
 
     VALID_ATTRS = {
-        'charset', 'name', 'src', 'content', 'controls', 'type', 'href', 'alt',
+        'charset', 'name', 'src', 'content', 'controls', 'type', 'href',
+        'alt', 'rel',
     }
 
     BOOL_ATTRS = {
-        'controls',
+        'controls', 'hidden',
     }
 
     REQUIRED_ATTRS = {
@@ -130,6 +135,9 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'audio': (('controls',), 'HS0028'),
         'a': (('href',), 'HS0031'),
         'img': (('src',), 'HS0033'),
+        'input': (('type',), 'HS0035'),
+        'link': (('rel', 'href'), 'HS0040'),
+        'script': (('src',), 'HS0042'),
     }
 
     REQUIRED_ATTRS_ACCESS = {
@@ -141,6 +149,14 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         ('p', 'HS0017'),
         ('summary', 'HS0030'),
         ('a', 'HS0032'),
+        ('video', 'HA0002'),
+        ('audio', 'HA0003'),
+        ('h1', 'HS0036'),
+        ('h2', 'HS0036'),
+        ('h3', 'HS0036'),
+        ('h4', 'HS0036'),
+        ('h5', 'HS0036'),
+        ('h6', 'HS0036'),
     }
 
     class _StdHTMLParser(HTMLParser):
@@ -231,9 +247,10 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
             'tag_not_lowercase': 'HS0010',
         }
         for a, e in rules.items():
-            if hasattr(std_parser, a):
-                for t in getattr(std_parser, a):
-                    reports.add(Report(e, path, t[1], t[0]))
+            # no need to check attr exists,
+            # since doctype has been checked before
+            for t in getattr(std_parser, a):
+                reports.add(Report(e, path, t[1], t[0]))
 
     except AttributeError:
         reports.add(Report('HS0001', path, lineno, obj))
@@ -241,6 +258,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     finally:
         std_parser.close()
 
+    all_ids = set()
     parser = HTML(html=doc)
     for element in parser.find():
         lxml_element = element.element
@@ -292,20 +310,59 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
             if not v and a_lower not in BOOL_ATTRS:
                 reports.add(Report('HS0034', path, lineno, a))
 
+            if a_lower == 'id':
+                if v in all_ids:
+                    reports.add(Report('HS0037', path, lineno, f'id="{v}"'))
+                all_ids.add(v)
+
     for t in NOEMPTY_TAGS:
         for e in parser.find(t[0]):
             if not e.text:
                 reports.add(Report(t[1], path, e.element.sourceline, e.element.tag))
 
-    # <meta charset=""> element required one time
-    found = 0
-    for e in parser.find('meta'):
-        if 'charset' in e.attrs:
-            found += 1
-    if not found:
+    # `<h1>` element must be present only once
+    h1_list = parser.find('h1')
+    if len(h1_list) > 1:
+        e = h1_list[-1].element
+        reports.add(Report('HA0004', path, e.sourceline, e.tag))
+
+    # <main> element without "hidden" attribute must be present only once
+    main_list = parser.find('main')
+    main_count = len(main_list)
+    main_hidden_count = len(parser.find('main[hidden]'))
+    if main_count - main_hidden_count != 1:
+        for e in main_list:
+            reports.add(Report('HS0038', path, e.element.sourceline, 'main'))
+
+    # <meta> element with "charset" attribute must be present only once
+    meta_charset_list = parser.find('meta[charset]')
+    meta_charset_count = len(meta_charset_list)
+    if not meta_charset_count:
         reports.add(Report('HS0018', path, 0, 'meta charset'))
-    elif found > 1:
-        reports.add(Report('HS0009', path, 0, f'meta charset {found}'))
+    elif meta_charset_count > 1:
+        for e in meta_charset_list:
+            obj = f'meta charset {meta_charset_count}'
+            reports.add(Report('HS0009', path, e.element.sourceline, obj))
+
+    # <input> element with "type=image" must have "src" and "alt" atrributes
+    for e in parser.find('input[type="image"]'):
+        if 'src' not in e.attrs:
+            reports.add(Report('HS0039', path, e.element.sourceline, 'src'))
+        if 'alt' not in e.attrs:
+            reports.add(Report('HA0005', path, e.element.sourceline, 'alt'))
+
+    # <link> element must **NOT** have `type` attribute with value of `text/css`
+    for e in parser.find('link[rel="stylesheet"]'):
+        assert 'href' in e.attrs
+        if e.attrs['href'].endswith('css'):
+            if 'type' in e.attrs and e.attrs['type'] == 'text/css':
+                l = e.element.sourceline
+                reports.add(Report('HS0041', path, l, 'type'))
+
+    # <script> element must **NOT** have `type` attribute with value of `text/javascript`
+    for e in parser.find('script[type="text/javascript"]'):
+        l = e.element.sourceline
+        reports.add(Report('HS0043', path, l, 'type'))
 
     return reports
 
