@@ -69,6 +69,7 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 - **HS0037**. `id` attribute value must be **unique** (`id`属性值必须**唯一**)
 - **HS0038**. `<main>` element without `hidden` attribute must be present only **once** (不带`hidden`属性的`<main>`只能出现**一次**)
 - **HS0039**. `<input>` element with `type` attribute's value is `image` must have `src` attribute (`type`属性为`image`的`<input>`必须包含`src`属性)
+- **HS0040**. `<link>` element must have `src` and `rel` attributes (`<link>`元素必须包含`src`和`rel`属性)
 
 #### Accessibility (可用性)
 

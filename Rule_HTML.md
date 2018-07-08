@@ -437,6 +437,8 @@ Example as below (示例如下)：
 
 ### `HS0039`. `<input>` element with `type` attribute's value is `image` must have `src` attribute (`type`属性为`image`的`<input>`必须包含`src`属性)
 
+### `HS0040`. `<link>` element must have `src` and `rel` attributes (`<link>`元素必须包含`src`和`rel`属性)
+
 ## Accessibility (可用性)
 
 ### `HA0001`. `<img>` element must have `alt` atrribute (`<img>`标签必须包含`alt`属性)
@@ -519,19 +521,12 @@ Wrong (错误)：
 
 ### E01009. required attribute missing (必须包含特定属性)
 
-- `<link>`元素必须属性是`src`、`rel`
 - `<iframe>`必须包含属性`src`
 - `<embed>`必须包含属性`src`
 - `<input>`的`type`的属性值为`radio`的时候必须包含`name`属性
 - `<output>`必须包含属性`name`、`for`
 - `<meter>`必须包含属性`value`
 - `<progress>`必须包含属性`value`
-
-### E01017. (不能包含特定标签)
-
-- `<nav>`不能包含`<main>`、`<header>`、`<footer>`
-- `<header>`不能包含`<main>`、`<footer>`、`<aside>`
-- `<footer>`不能包含`<main>`、`<header>`、`<aside>`
 
 ### E01019. (`<script>`不能有`type="text/javascript"`属性)
 
