@@ -344,19 +344,24 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
             reports.add(Report('HS0009', path, e.element.sourceline, obj))
 
     # <input> element with "type=image" must have "src" and "alt" atrributes
-    for e in parser.find('input[type=image]'):
+    for e in parser.find('input[type="image"]'):
         if 'src' not in e.attrs:
             reports.add(Report('HS0039', path, e.element.sourceline, 'src'))
         if 'alt' not in e.attrs:
             reports.add(Report('HA0005', path, e.element.sourceline, 'alt'))
 
     # <link> element must **NOT** have `type` attribute with value of `text/css`
-    for e in parser.find('link[rel=stylesheet]'):
+    for e in parser.find('link[rel="stylesheet"]'):
         assert 'href' in e.attrs
         if e.attrs['href'].endswith('css'):
             if 'type' in e.attrs and e.attrs['type'] == 'text/css':
                 l = e.element.sourceline
                 reports.add(Report('HS0041', path, l, 'type'))
+
+    # <script> element must **NOT** have `type` attribute with value of `text/javascript`
+    for e in parser.find('script[type="text/javascript"]'):
+        l = e.element.sourceline
+        reports.add(Report('HS0043', path, l, 'type'))
 
     return reports
 
