@@ -316,32 +316,26 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     # `<h1>` element must be present only once
     h1_list = parser.find('h1')
     if len(h1_list) > 1:
-        e = h1_list[-1]
-        e = e.element
+        e = h1_list[-1].element
         reports.add(Report('HA0004', path, e.sourceline, e.tag))
 
-    # <main> element without "hidden" atribute must be present only once
+    # <main> element without "hidden" attribute must be present only once
     main_list = parser.find('main')
     main_count = len(main_list)
-    main_hidden_count = 0
-    if main_count > 1:
+    main_hidden_count = len(parser.find('main[hidden]'))
+    if main_count - main_hidden_count != 1:
         for m in main_list:
-            if 'hidden' in m.attrs:
-                main_hidden_count += 1
-        if main_count - main_hidden_count != 1:
-            e = main_list[-1]
-            e = e.element
-            reports.add(Report('HS0038', path, e.sourceline, e.tag))
+            reports.add(Report('HS0038', path, m.element.sourceline, 'main'))
 
     # <meta> element with "charset" attribute must be present only once
-    meta_charset_count = 0
-    for e in parser.find('meta'):
-        if 'charset' in e.attrs:
-            meta_charset_count += 1
+    meta_charset_list = parser.find('meta[charset]')
+    meta_charset_count = len(meta_charset_list)
     if not meta_charset_count:
         reports.add(Report('HS0018', path, 0, 'meta charset'))
     elif meta_charset_count > 1:
-        reports.add(Report('HS0009', path, 0, f'meta charset {meta_charset_count}'))
+        for m in meta_charset_list:
+            obj = f'meta charset {meta_charset_count}'
+            reports.add(Report('HS0009', path, m.element.sourceline, obj))
 
     return reports
 
