@@ -70,6 +70,7 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 - **HS0038**. `<main>` element without `hidden` attribute must be present only **once** (不带`hidden`属性的`<main>`只能出现**一次**)
 - **HS0039**. `<input>` element with `type` attribute's value is `image` must have `src` attribute (`type`属性为`image`的`<input>`必须包含`src`属性)
 - **HS0040**. `<link>` element must have `src` and `rel` attributes (`<link>`元素必须包含`src`和`rel`属性)
+- **HS0041**. `<link>` element must **NOT** have `type` attribute with value of `text/css` (`<link>`元素不可包含属性值为`text/css`的`type`属性)
 
 #### Accessibility (可用性)
 
@@ -81,4 +82,3 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 - **HA0006**. `<aside>` element must **NOT** have child of `<main>` element (`<aside>`标签不可包含`<main>`子元素)
 
 - E01019. (`<script>`不能有`type="text/javascript"`属性)
-- E01020. (`<link>`不能有`type="text/css"`属性)

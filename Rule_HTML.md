@@ -439,6 +439,20 @@ Example as below (示例如下)：
 
 ### `HS0040`. `<link>` element must have `src` and `rel` attributes (`<link>`元素必须包含`src`和`rel`属性)
 
+### `HS0041`. `<link>` element must **NOT** have `type` attribute with value of `text/css` (`<link>`元素不可包含属性值为`text/css`的`type`属性)
+
+正确：
+
+```html
+<link src="css/style.css" rel="stylesheet">
+```
+
+错误：
+
+```html
+<link src="css/style.css" rel="stylesheet" type="text/css">
+```
+
 ## Accessibility (可用性)
 
 ### `HA0001`. `<img>` element must have `alt` atrribute (`<img>`标签必须包含`alt`属性)
@@ -540,18 +554,4 @@ Wrong (错误)：
 
 ```html
 <script src="js/js.js" type="text/javascript"></script>
-```
-
-### E01020. (`<link>`不能有`type="text/css"`属性)
-
-正确：
-
-```html
-<link src="css/style.css" rel="stylesheet">
-```
-
-错误：
-
-```html
-<link src="css/style.css" rel="stylesheet" type="text/css">
 ```
