@@ -481,25 +481,7 @@ Wrong (错误)：
 
 ### `HA0005`. `<input>` element with `type` attribute's value is `image` must have `alt` attribute (`type`属性为`image`的`<input>`必须包含`alt`属性)
 
----
-
-### E01009. required attribute missing (必须包含特定属性)
-
-- `<link>`元素必须属性是`src`、`rel`
-- `<iframe>`必须包含属性`src`
-- `<embed>`必须包含属性`src`
-- `<input>`的`type`的属性值为`radio`的时候必须包含`name`属性
-- `<input>`的`type`的属性值为`img`的时候必须包含`src`、`alt`属性
-- `<output>`必须包含属性`name`、`for`
-- `<meter>`必须包含属性`value`
-- `<progress>`必须包含属性`value`
-
-### E01017. (不能包含特定标签)
-
-- `<aside>`不能包含`<main>`
-- `<nav>`不能包含`<main>`、`<header>`、`<footer>`
-- `<header>`不能包含`<main>`、`<footer>`、`<aside>`
-- `<footer>`不能包含`<main>`、`<header>`、`<aside>`
+### `HA0006`. `<aside>` element must **NOT** have child of `<main>` element (`<aside>`标签不可包含`<main>`子元素)
 
 正确：
 
@@ -532,6 +514,24 @@ Wrong (错误)：
   </body>
 </html>
 ```
+
+---
+
+### E01009. required attribute missing (必须包含特定属性)
+
+- `<link>`元素必须属性是`src`、`rel`
+- `<iframe>`必须包含属性`src`
+- `<embed>`必须包含属性`src`
+- `<input>`的`type`的属性值为`radio`的时候必须包含`name`属性
+- `<output>`必须包含属性`name`、`for`
+- `<meter>`必须包含属性`value`
+- `<progress>`必须包含属性`value`
+
+### E01017. (不能包含特定标签)
+
+- `<nav>`不能包含`<main>`、`<header>`、`<footer>`
+- `<header>`不能包含`<main>`、`<footer>`、`<aside>`
+- `<footer>`不能包含`<main>`、`<header>`、`<aside>`
 
 ### E01019. (`<script>`不能有`type="text/javascript"`属性)
 
