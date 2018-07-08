@@ -82,3 +82,7 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 - **HA0004**. `<h1>` element must be present only **once** (`<h1>`元素只能出现**一次**)
 - **HA0005**. `<input>` element with `type` attribute's value is `image` must have `alt` attribute (`type`属性为`image`的`<input>`必须包含`alt`属性)
 - **HA0006**. `<aside>` element must **NOT** have child of `<main>` element (`<aside>`标签不可包含`<main>`子元素)
+
+#### Performance (性能)
+
+- **HP0001**. `<script>` element must **NOT** used in `<head>` element (`<script>元素不可用于<head>元素内`)

@@ -547,6 +547,10 @@ Wrong (错误)：
 </html>
 ```
 
+## Performance (性能)
+
+### `HP0001`. `<script>` element must **NOT** used in `<head>` element (`<script>元素不可用于<head>元素内`)
+
 ---
 
 ### E01009. required attribute missing (必须包含特定属性)
