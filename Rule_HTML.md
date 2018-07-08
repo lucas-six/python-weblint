@@ -67,7 +67,7 @@ Wrong(错误)：
 Deprecated tags  (废弃标签):
 
 ```html
-<center>, <font>, <s>, <strike>, <b>, <i>, <tt>, <small>, <frame>, <acronym>, <big>, <u>, <isindex>, <basefont>, <dir>, <applet>
+<center>, <font>, <s>, <strike>, <b>, <i>, <tt>, <small>, <frame>, <acronym>, <big>, <u>, <isindex>, <basefont>, <dir>, <applet>, <style>
 ```
 
 ### `HS005`. tag must be paired (双标签必须成对)
@@ -130,6 +130,7 @@ Deprecated attributes (废弃属性包括):
 
 | Attribute (属性) | Element (所属的元素) |
 | ---- | ---- |
+| style | ALL |
 | manifest | html |
 | xmlns | html,title |
 | align | caption, iframe, img, input, object, legend, table, hr, div, h1, h2, h3, h4, h5, h6, p, col, colgroup, tbody, td, tfoot, th, thead and tr |
@@ -406,6 +407,34 @@ Example as below (示例如下)：
 </body>
 ```
 
+### `HS0038`. `<main>` element without `hidden` attribute must be present only **once** (不带`hidden`属性的`<main>`只能出现**一次**)
+
+正确：
+
+```html
+<body>
+  <main>主体内容</main>
+  <main hidden>主体内容</main>
+</body>
+```
+
+或
+
+```html
+<body>
+  <main>主体内容</main>
+</body>
+```
+
+错误：
+
+```html
+<body>
+  <main>主体内容</main>
+  <main>主体内容</main>
+</body>
+```
+
 ## Accessibility (可用性)
 
 ### `HA0001`. `<img>` element must have `alt` atrribute (`<img>`标签必须包含`alt`属性)
@@ -428,7 +457,7 @@ Example as below (示例如下)：
 </audio>
 ```
 
-### `HA0004`. `<h1>` element must present only once (`<h1>`元素只能出现一次)(`id`只能是唯一)
+### `HA0004`. `<h1>` element must be present only **once** (`<h1>`元素只能出现**一次**)
 
 Right (正确)：
 
@@ -498,34 +527,6 @@ Wrong (错误)：
     </aside>
   </body>
 </html>
-```
-
-### E01018. (`<main>`不带`hidden`只能出现一次)
-
-正确：
-
-```html
-<body>
-  <main>主体内容</main>
-  <main hidden>主体内容</main>
-</body>
-```
-
-或
-
-```html
-<body>
-  <main>主体内容</main>
-</body>
-```
-
-错误：
-
-```html
-<body>
-  <main>主体内容</main>
-  <main>主体内容</main>
-</body>
 ```
 
 ### E01019. (`<script>`不能有`type="text/javascript"`属性)
