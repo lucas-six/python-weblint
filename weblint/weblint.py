@@ -251,6 +251,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     finally:
         std_parser.close()
 
+    all_ids = set()
     parser = HTML(html=doc)
     for element in parser.find():
         lxml_element = element.element
@@ -301,6 +302,11 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
             # validate attribute's value is NOT empty
             if not v and a_lower not in BOOL_ATTRS:
                 reports.add(Report('HS0034', path, lineno, a))
+
+            if a_lower == 'id':
+                if v in all_ids:
+                    reports.add(Report('HS0037', path, lineno, f'id="{v}"'))
+                all_ids.add(v)
 
     for t in NOEMPTY_TAGS:
         for e in parser.find(t[0]):

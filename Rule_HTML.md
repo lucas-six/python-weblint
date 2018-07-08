@@ -386,6 +386,26 @@ Example as below (示例如下)：
 
 ### `HS0036`. `<h1>`~`<h6>` element must **NOT** be empty (`<h1>`~`<h6>`元素不可为空)
 
+### `HS0037`. `id` attribute value must be unique (`id`属性值必须唯一)
+
+正确：
+
+```html
+<body>
+  <p id="index">文档内容</p>
+  <p id="home">文档内容</p>
+</body>
+```
+
+错误：
+
+```html
+<body>
+  <p id="index">文档内容</p>
+  <p id="index">文档内容</p>
+</body>
+```
+
 ## Accessibility (可用性)
 
 ### `HA0001`. `<img>` element must have `alt` atrribute (`<img>`标签必须包含`alt`属性)
@@ -425,26 +445,6 @@ Wrong (错误)：
 <body>
   <h1>一级标题1</h1>
   <h1>一级标题2</h1>
-</body>
-```
-
-### id 唯一
-
-正确：
-
-```html
-<body>
-  <p id="index">文档内容</p>
-  <p id="home">文档内容</p>
-</body>
-```
-
-错误：
-
-```html
-<body>
-  <p id="index">文档内容</p>
-  <p id="index">文档内容</p>
 </body>
 ```
 
