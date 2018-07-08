@@ -382,6 +382,10 @@ Example as below (示例如下)：
 
 ### `HS0034`. non-boolean value of attribute must **NOT** be empty (非布尔值的属性值不能为空)
 
+### `HS0035`. `<input>` element must have `type` atrribute (`<input>`标签必须包含`type`属性)
+
+### `HS0036`. `<h1>`~`<h6>` element must **NOT** be empty (`<h1>`~`<h6>`元素不可为空)
+
 ## Accessibility (可用性)
 
 ### `HA0001`. `<img>` element must have `alt` atrribute (`<img>`标签必须包含`alt`属性)
@@ -404,21 +408,27 @@ Example as below (示例如下)：
 </audio>
 ```
 
----
+### `HA0004`. `<h1>` element must present only once (`<h1>`元素只能出现一次)(`id`只能是唯一)
 
-### E01009. required attribute missing (必须包含特定属性)
+Right (正确)：
 
-- `<link>`元素必须属性是`src`、`rel`
-- `<input>`必须包含属性`type`
-- `<iframe>`必须包含属性`src`
-- `<embed>`必须包含属性`src`
-- `<input>`的`type`的属性值为`radio`的时候必须包含`name`属性
-- `<input>`的`type`的属性值为`img`的时候必须包含`src`、`alt`属性
-- `<output>`必须包含属性`name`、`for`
-- `<meter>`必须包含属性`value`
-- `<progress>`必须包含属性`value`
+```html
+<body>
+  <h1>一级标题</h1>
+  <h2>二级标题</h2>
+</body>
+```
 
-### E01015. (`id`只能是唯一)
+Wrong (错误)：
+
+```html
+<body>
+  <h1>一级标题1</h1>
+  <h1>一级标题2</h1>
+</body>
+```
+
+### id 唯一
 
 正确：
 
@@ -438,25 +448,18 @@ Example as below (示例如下)：
 </body>
 ```
 
-### E01016. (`<h1>`只能出现一次)
+---
 
-正确：
+### E01009. required attribute missing (必须包含特定属性)
 
-```html
-<body>
-  <h1>标题1</h1>
-  <h2>标题2</h2>
-</body>
-```
-
-错误：
-
-```html
-<body>
-  <h1>标题1</h1>
-  <h1>标题1</h1>
-</body>
-```
+- `<link>`元素必须属性是`src`、`rel`
+- `<iframe>`必须包含属性`src`
+- `<embed>`必须包含属性`src`
+- `<input>`的`type`的属性值为`radio`的时候必须包含`name`属性
+- `<input>`的`type`的属性值为`img`的时候必须包含`src`、`alt`属性
+- `<output>`必须包含属性`name`、`for`
+- `<meter>`必须包含属性`value`
+- `<progress>`必须包含属性`value`
 
 ### E01017. (不能包含特定标签)
 

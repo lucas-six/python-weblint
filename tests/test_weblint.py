@@ -137,6 +137,15 @@ class WebLintTests(unittest.TestCase):
     def test_HS0034(self):
         self._test('tests/HS0034.html', 'HS0034', 4, 'charset')
 
+    def test_HS0035(self):
+        self._test('tests/HS0035.html', 'HS0035', 8, 'type')
+
+    def test_HS0036(self):
+        e = ('HS0036',) * 6
+        l = tuple(range(8, 14))
+        o = ('h1', 'h2', 'h3', 'h4', 'h5', 'h6')
+        self._test('tests/HS0036.html', e, l, o)
+
     def test_HA0001(self):
         self._test('tests/HA0001.html', 'HA0001', 8, 'alt')
 
@@ -145,6 +154,9 @@ class WebLintTests(unittest.TestCase):
 
     def test_HA0003(self):
         self._test('tests/HA0003.html', 'HA0003', 8, 'audio')
+
+    def test_HA0004(self):
+        self._test('tests/HA0004.html', 'HA0004', 9, 'h1')
 
     def test_E(self):
         e = ('HS0007', 'HS0012', 'HS0009', 'HS0006', 'HS0004', 'HS0005')

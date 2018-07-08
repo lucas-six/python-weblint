@@ -64,15 +64,17 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 - **HS0032**. `<a>` element must **NOT** be empty (`<a>`元素不可为空)
 - **HS0033**. `<img>` element must have `src` atrribute (`<img>`标签必须包含`src`属性)
 - **HS0034**. non-boolean value of attribute must **NOT** be empty (非布尔值的属性值不能为空)
+- **HS0035**. `<input>` element must have `type` atrribute (`<input>`标签必须包含`type`属性)
+- **HS0036**. `<h1>`~`<h6>` element must **NOT** be empty (`<h1>`~`<h6>`元素不可为空)
 
 #### Accessibility (可用性)
 
 - **HA0001**. `<img>` element must have `alt` atrribute (`<img>`标签必须包含`alt`属性)
 - **HA0002**. `<video>` element must **NOT** be empty (`<video>`元素不可为空)
 - **HA0003**. `<audio>` element must **NOT** be empty (`<audio>`元素不可为空)
+- **HA0004**. `<h1>` element must present only once (`<h1>`元素只能出现一次)
 
 - E01015. (`id`只能是唯一)
-- E01016. (`<h1>`只能出现一次)
 - E01017. (不能包含特定标签)
 - E01018. (`<main>`不带`hidden`只能出现一次)
 - E01019. (`<script>`不能有`type="text/javascript"`属性)

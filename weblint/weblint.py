@@ -130,6 +130,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'audio': (('controls',), 'HS0028'),
         'a': (('href',), 'HS0031'),
         'img': (('src',), 'HS0033'),
+        'input': (('type',), 'HS0035'),
     }
 
     REQUIRED_ATTRS_ACCESS = {
@@ -143,6 +144,12 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         ('a', 'HS0032'),
         ('video', 'HA0002'),
         ('audio', 'HA0003'),
+        ('h1', 'HS0036'),
+        ('h2', 'HS0036'),
+        ('h3', 'HS0036'),
+        ('h4', 'HS0036'),
+        ('h5', 'HS0036'),
+        ('h6', 'HS0036'),
     }
 
     class _StdHTMLParser(HTMLParser):
@@ -233,9 +240,10 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
             'tag_not_lowercase': 'HS0010',
         }
         for a, e in rules.items():
-            if hasattr(std_parser, a):
-                for t in getattr(std_parser, a):
-                    reports.add(Report(e, path, t[1], t[0]))
+            # no need to check attr exists,
+            # since doctype has been checked before
+            for t in getattr(std_parser, a):
+                reports.add(Report(e, path, t[1], t[0]))
 
     except AttributeError:
         reports.add(Report('HS0001', path, lineno, obj))
@@ -298,6 +306,11 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         for e in parser.find(t[0]):
             if not e.text:
                 reports.add(Report(t[1], path, e.element.sourceline, e.element.tag))
+
+    # `<h1>` element must present only once
+    e = parser.find('h1')
+    if len(e) > 1:
+        reports.add(Report('HA0004', path, e[-1].element.sourceline, e[-1].element.tag))
 
     # <meta charset=""> element required one time
     found = 0
