@@ -71,6 +71,9 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'details': (
             (('summary', '==', 1), 'HS0029'),
         ),
+        'aside': (
+            (('main', '==', 0), 'HA0006'),
+        ),
     }
 
     SELFCLOSED_TAGS = {
