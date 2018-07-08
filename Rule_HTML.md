@@ -453,6 +453,22 @@ Example as below (示例如下)：
 <link href="css/style.css" rel="stylesheet" type="text/css"/>
 ```
 
+### `HS0042`. `<script>` element must have `src` attribute (`<script>`元素必须包含`src`属性)
+
+### `HS0043`. `<script>` element must **NOT** have `type` attribute with value of `text/javascript` (`<script>`元素不可包含属性值为`text/javascript`的`type`属性)
+
+正确：
+
+```html
+<script src="js/js.js"></script>
+```
+
+错误：
+
+```html
+<script src="js/js.js" type="text/javascript"></script>
+```
+
 ## Accessibility (可用性)
 
 ### `HA0001`. `<img>` element must have `alt` atrribute (`<img>`标签必须包含`alt`属性)
@@ -541,17 +557,3 @@ Wrong (错误)：
 - `<output>`必须包含属性`name`、`for`
 - `<meter>`必须包含属性`value`
 - `<progress>`必须包含属性`value`
-
-### E01019. (`<script>`不能有`type="text/javascript"`属性)
-
-正确：
-
-```html
-<script src="js/js.js"></script>
-```
-
-错误：
-
-```html
-<script src="js/js.js" type="text/javascript"></script>
-```
