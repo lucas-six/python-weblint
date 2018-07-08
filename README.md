@@ -76,6 +76,7 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 - **HA0002**. `<video>` element must **NOT** be empty (`<video>`元素不可为空)
 - **HA0003**. `<audio>` element must **NOT** be empty (`<audio>`元素不可为空)
 - **HA0004**. `<h1>` element must be present only **once** (`<h1>`元素只能出现**一次**)
+- **HA0005**. `<input>` element with `type` attribute's value is `image` must have `alt` attribute (`type`属性为`image`的`<input>`必须包含`alt`属性)
 
 - E01019. (`<script>`不能有`type="text/javascript"`属性)
 - E01020. (`<link>`不能有`type="text/css"`属性)

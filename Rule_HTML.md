@@ -479,6 +479,8 @@ Wrong (错误)：
 </body>
 ```
 
+### `HA0005`. `<input>` element with `type` attribute's value is `image` must have `alt` attribute (`type`属性为`image`的`<input>`必须包含`alt`属性)
+
 ---
 
 ### E01009. required attribute missing (必须包含特定属性)

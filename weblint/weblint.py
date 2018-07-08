@@ -337,10 +337,12 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
             obj = f'meta charset {meta_charset_count}'
             reports.add(Report('HS0009', path, e.element.sourceline, obj))
 
-    # <input> element with "type=image" must have "src" atrribute
+    # <input> element with "type=image" must have "src" and "alt" atrributes
     for e in parser.find('input[type=image]'):
         if 'src' not in e.attrs:
             reports.add(Report('HS0039', path, e.element.sourceline, 'src'))
+        if 'alt' not in e.attrs:
+            reports.add(Report('HA0005', path, e.element.sourceline, 'alt'))
 
     return reports
 
