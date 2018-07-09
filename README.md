@@ -73,6 +73,9 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 - **HS0041**. `<link>` element must **NOT** have `type` attribute with value of `text/css` (`<link>`元素不可包含属性值为`text/css`的`type`属性)
 - **HS0042**. `<script>` element must have `src` attribute (`<script>`元素必须包含`src`属性)
 - **HS0043**. `<script>` element must **NOT** have `type` attribute with value of `text/javascript` (`<script>`元素不可包含属性值为`text/javascript`的`type`属性)
+- **HS0044**. `<figure>` element must have child of `<figcaption>` element (`<figure>`元素必须包含`<figcaption>`子元素)
+- **HS0045**. `<progress>` element must have `value` and `max` attributes (`<progress>`元素必须包含`value`和`max`属性)
+- **HS0046**. `<meter>` element must have `value` and `max` attributes (`<meter>`元素必须包含`value`和`max`属性)
 
 #### Accessibility (可用性)
 
@@ -82,6 +85,8 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 - **HA0004**. `<h1>` element must be present only **once** (`<h1>`元素只能出现**一次**)
 - **HA0005**. `<input>` element with `type` attribute's value is `image` must have `alt` attribute (`type`属性为`image`的`<input>`必须包含`alt`属性)
 - **HA0006**. `<aside>` element must **NOT** have child of `<main>` element (`<aside>`标签不可包含`<main>`子元素)
+- **HA0007**. `<a>` element must have `title` atrribute (`<a>`标签必须包含`title`属性)
+- **HA0008**. `<meter>` element must **NOT** be empty (`<meter>`元素不可为空)
 
 #### Performance (性能)
 

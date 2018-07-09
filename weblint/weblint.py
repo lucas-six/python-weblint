@@ -31,8 +31,53 @@ from requests_html import HTML
 Report = namedtuple('Report', ['rule', 'path', 'lineno', 'object'])
 
 
-def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
-    '''HTML Parser.'''
+def weblint(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set():
+    '''API for WebLint.
+
+    :param path: path of source code.
+    :param doctype: HTML Doctype
+    '''
+    if not path.exists():
+        return {Report('G00001', path, 0, '')}
+
+    reports = set()
+    if path.is_dir():
+        for p in chain(path.rglob('*.html'), path.rglob('*.css'), path.rglob('*.js')):
+            reports |= weblint(p)
+
+    elif path.is_file():
+        # suffix must be one of '.html', '.css' and '.js'
+        suffix = path.suffix
+        if suffix == '.html':
+            reports |= _weblint_html(path, doctype=doctype)
+        elif suffix == '.css':
+            reports |= _weblint_css(path)
+        elif suffix == '.js':
+            reports |= _weblint_js(path)
+        else:
+            pass            
+
+    return reports
+
+
+def main():
+    '''A command line tool of WebLint.
+    '''
+    parser = argparse.ArgumentParser(description='WebLint: The Web Code Quality Tool')
+    parser.add_argument('source', metavar='F', type=str, nargs='+',
+                    help='directory or source HTML/CSS/JavaScript file')
+
+    reports = set()
+    for path in parser.parse_args().source:
+        path = pathlib.Path(path)
+        reports |= weblint(path)
+
+    print(reports)
+
+
+def _weblint_html(path: pathlib.Path, doctype: str) -> set:
+    '''HTML Lint for WebLint.
+    '''
 
     DEPRECATED_TAGS = {
         'font', 'center', 's', 'strike', 'b', 'i', 'tt', 'small', 'frame',
@@ -75,6 +120,9 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'aside': (
             (('main', '==', 0), 'HA0006'),
         ),
+        'figure': (
+            (('figcaption', '==', 1), 'HS0044'),
+        ),
     }
 
     SELFCLOSED_TAGS = {
@@ -112,7 +160,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'style', 'manifest', 'xmlns', 'align', 'alink', 'link', 'vlink',
         'text', 'background', 'bgcolor', 'border', 'char', 'charoff',
         'compact', 'frame', 'frameborder', 'hspace', 'nowrap', 'rules',
-        'value', 'valign', 'accept', 'vspace',
+        'valign', 'accept', 'vspace',
     }
 
     GLOBAL_ATTRS = {
@@ -121,7 +169,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
 
     VALID_ATTRS = {
         'charset', 'name', 'src', 'content', 'controls', 'type', 'href',
-        'alt', 'rel',
+        'alt', 'rel', 'value', 'min', 'max',
     }
 
     BOOL_ATTRS = {
@@ -138,10 +186,13 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'input': (('type',), 'HS0035'),
         'link': (('rel', 'href'), 'HS0040'),
         'script': (('src',), 'HS0042'),
+        'progress': (('value', 'max'), 'HS0045'),
+        'meter': (('value', 'min', 'max'), 'HS0046'),
     }
 
     REQUIRED_ATTRS_ACCESS = {
         'img': (('alt',), 'HA0001'),
+        'a': (('title',), 'HA0007'),
     }
 
     NOEMPTY_TAGS = {
@@ -157,6 +208,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         ('h4', 'HS0036'),
         ('h5', 'HS0036'),
         ('h6', 'HS0036'),
+        ('meter', 'HA0008'),
     }
 
     class _StdHTMLParser(HTMLParser):
@@ -367,49 +419,15 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     return reports
 
 
-def main():
-    parser = argparse.ArgumentParser(description='WebLint: The Web Code Quality Tool')
-    parser.add_argument('source', metavar='F', type=str, nargs='+',
-                    help='directory or source HTML/CSS/JavaScript file')
-
-    reports = set()
-    n = 0
-    for path in parser.parse_args().source:
-        path = pathlib.Path(path)
-
-        if not path.exists():
-            reports.add(Report('G00001', path, 0, ''))
-
-        elif path.is_file():
-            n += 1
-            reports |= _weblint_onefile(path)
-
-        elif path.is_dir():
-            for sub in chain(
-                    path.rglob('*.html'),
-                    path.rglob('*.css'),
-                    path.rglob('*.js')):
-                _weblint_onefile(sub)
-
-    print(n, reports)
+def _weblint_css(path: pathlib.Path) -> set:
+    '''CSS Lint for WebLint.
+    '''
+    return set()
 
 
-def _debug(msg: str):
-    if __debug__:
-        print(msg)
+def _weblint_js(path: pathlib.Path) -> set:
+    raise NotImplementedError
 
-
-def _weblint_onefile(path: pathlib.Path) -> set:
-    assert path.is_file()
-
-    # whose suffix must be one of '.html', '.css' and '.js'
-    suffix = path.suffix        
-    if suffix == '.html':
-        return htmlparser(path)
-    elif suffix == '.css':
-        raise NotImplementedError
-    elif suffix == '.js':
-        raise NotImplementedError
 
 if __name__ == '__main__':
     main()

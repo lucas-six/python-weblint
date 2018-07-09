@@ -24,7 +24,7 @@ class WebLintTests(unittest.TestCase):
             expected = set()
             for e, l, o in zip(exxx, lineno, obj):
                 expected.add(weblint.Report(e, path, l, o))
-        self.assertSetEqual(weblint.htmlparser(path), expected)
+        self.assertSetEqual(weblint.weblint(path), expected)
 
     def testG00001(self):
         self._test('not_exist_file', 'G00001', 0, '')
@@ -173,6 +173,21 @@ class WebLintTests(unittest.TestCase):
     def test_HS0043(self):
         self._test('tests/HS0043.html', 'HS0043', 8, 'type')
 
+    def test_HS0044(self):
+        self._test('tests/HS0044.html', 'HS0044', 8, 'figcaption')
+
+    def test_HS0045(self):
+        e = ('HS0045',) * 2
+        l = (8,) * 2
+        o = ('value', 'max')
+        self._test('tests/HS0045.html', e, l, o)
+
+    def test_HS0046(self):
+        e = ('HS0046',) * 3
+        l = (8,) * 3
+        o = ('value', 'min', 'max')
+        self._test('tests/HS0046.html', e, l, o)
+
     def test_HA0001(self):
         self._test('tests/HA0001.html', 'HA0001', 8, 'alt')
 
@@ -190,6 +205,12 @@ class WebLintTests(unittest.TestCase):
 
     def test_HA0006(self):
         self._test('tests/HA0006.html', 'HA0006', 8, 'main')
+
+    def test_HA0007(self):
+        self._test('tests/HA0007.html', 'HA0007', 8, 'title')
+
+    def test_HA0008(self):
+        self._test('tests/HA0008.html', 'HA0008', 8, 'meter')
 
     def test_HP0001(self):
         self._test('tests/HP0001.html', 'HP0001', 3, 'script')

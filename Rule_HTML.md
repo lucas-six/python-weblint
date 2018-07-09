@@ -470,6 +470,27 @@ Example as below (示例如下)：
 <script src="js/js.js" type="text/javascript"></script>
 ```
 
+### `HS0044`. `<figure>` element must have child of `<figcaption>` element (`<figure>`元素必须包含`<figcaption>`子元素)
+
+```html
+<figure>
+  <img src="fig.png" alt="The Pulpit Rock"/>
+  <figcaption>Fig1. - The Figure Picture.</figcaption>
+</figure>
+```
+
+### `HS0045`. `<progress>` element must have `value` and `max` attributes (`<progress>`元素必须包含`value`和`max`属性)
+
+```html
+<progress value="22" max="100"></progress>
+```
+
+### `HS0046`. `<meter>` element must have `value` and `max` attributes (`<meter>`元素必须包含`value`和`max`属性)
+
+```html
+<meter value="22" min="0", max="100">22</meter>
+```
+
 ## Accessibility (可用性)
 
 ### `HA0001`. `<img>` element must have `alt` atrribute (`<img>`标签必须包含`alt`属性)
@@ -548,6 +569,10 @@ Wrong (错误)：
 </html>
 ```
 
+### `HA0007`. `<a>` element must have `title` atrribute (`<a>`标签必须包含`title`属性)
+
+### `HA0008`. `<meter>` element must **NOT** be empty (`<meter>`元素不可为空)
+
 ## Performance (性能)
 
 ### `HP0001`. `<script>` element must **NOT** used in `<head>` element (`<script>元素不可用于<head>元素内`)
@@ -560,5 +585,3 @@ Wrong (错误)：
 - `<embed>`必须包含属性`src`
 - `<input>`的`type`的属性值为`radio`的时候必须包含`name`属性
 - `<output>`必须包含属性`name`、`for`
-- `<meter>`必须包含属性`value`
-- `<progress>`必须包含属性`value`
