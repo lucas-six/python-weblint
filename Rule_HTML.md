@@ -563,6 +563,8 @@ Wrong (错误)：
 </html>
 ```
 
+### `HA0007`. `<a>` element must have `title` atrribute (`<a>`标签必须包含`title`属性)
+
 ## Performance (性能)
 
 ### `HP0001`. `<script>` element must **NOT** used in `<head>` element (`<script>元素不可用于<head>元素内`)
