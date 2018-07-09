@@ -115,7 +115,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'style', 'manifest', 'xmlns', 'align', 'alink', 'link', 'vlink',
         'text', 'background', 'bgcolor', 'border', 'char', 'charoff',
         'compact', 'frame', 'frameborder', 'hspace', 'nowrap', 'rules',
-        'value', 'valign', 'accept', 'vspace',
+        'valign', 'accept', 'vspace',
     }
 
     GLOBAL_ATTRS = {
@@ -124,7 +124,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
 
     VALID_ATTRS = {
         'charset', 'name', 'src', 'content', 'controls', 'type', 'href',
-        'alt', 'rel',
+        'alt', 'rel', 'value', 'min', 'max',
     }
 
     BOOL_ATTRS = {
@@ -163,6 +163,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         ('h4', 'HS0036'),
         ('h5', 'HS0036'),
         ('h6', 'HS0036'),
+        ('meter', 'HA0008'),
     }
 
     class _StdHTMLParser(HTMLParser):
