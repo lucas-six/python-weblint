@@ -86,6 +86,7 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 - **HA0005**. `<input>` element with `type` attribute's value is `image` must have `alt` attribute (`type`属性为`image`的`<input>`必须包含`alt`属性)
 - **HA0006**. `<aside>` element must **NOT** have child of `<main>` element (`<aside>`标签不可包含`<main>`子元素)
 - **HA0007**. `<a>` element must have `title` atrribute (`<a>`标签必须包含`title`属性)
+- **HA0008**. `<meter>` element must **NOT** be empty (`<meter>`元素不可为空)
 
 #### Performance (性能)
 
