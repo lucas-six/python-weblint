@@ -479,6 +479,12 @@ Example as below (示例如下)：
 </figure>
 ```
 
+### `HS0045`. `<progress>` element must have `value` and `max` attributes (`<progress>`元素必须包含`value`和`max`属性)
+
+```html
+<progress value="22" max="100"></progress>
+```
+
 ## Accessibility (可用性)
 
 ### `HA0001`. `<img>` element must have `alt` atrribute (`<img>`标签必须包含`alt`属性)
@@ -570,4 +576,3 @@ Wrong (错误)：
 - `<input>`的`type`的属性值为`radio`的时候必须包含`name`属性
 - `<output>`必须包含属性`name`、`for`
 - `<meter>`必须包含属性`value`
-- `<progress>`必须包含属性`value`
