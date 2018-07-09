@@ -585,4 +585,3 @@ Wrong (错误)：
 - `<embed>`必须包含属性`src`
 - `<input>`的`type`的属性值为`radio`的时候必须包含`name`属性
 - `<output>`必须包含属性`name`、`for`
-- `<meter>`必须包含属性`value`
