@@ -141,6 +141,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'input': (('type',), 'HS0035'),
         'link': (('rel', 'href'), 'HS0040'),
         'script': (('src',), 'HS0042'),
+        'progress': (('value', 'max'), 'HS0045'),
     }
 
     REQUIRED_ATTRS_ACCESS = {

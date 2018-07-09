@@ -176,6 +176,12 @@ class WebLintTests(unittest.TestCase):
     def test_HS0044(self):
         self._test('tests/HS0044.html', 'HS0044', 8, 'figcaption')
 
+    def test_HS0045(self):
+        e = ('HS0045',) * 2
+        l = (8,) * 2
+        o = ('value', 'max')
+        self._test('tests/HS0045.html', e, l, o)
+
     def test_HA0001(self):
         self._test('tests/HA0001.html', 'HA0001', 8, 'alt')
 
