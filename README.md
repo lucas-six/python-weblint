@@ -75,6 +75,7 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 - **HS0043**. `<script>` element must **NOT** have `type` attribute with value of `text/javascript` (`<script>`元素不可包含属性值为`text/javascript`的`type`属性)
 - **HS0044**. `<figure>` element must have child of `<figcaption>` element (`<figure>`元素必须包含`<figcaption>`子元素)
 - **HS0045**. `<progress>` element must have `value` and `max` attributes (`<progress>`元素必须包含`value`和`max`属性)
+- **HS0046**. `<meter>` element must have `value` and `max` attributes (`<meter>`元素必须包含`value`和`max`属性)
 
 #### Accessibility (可用性)
 

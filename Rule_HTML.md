@@ -485,6 +485,12 @@ Example as below (示例如下)：
 <progress value="22" max="100"></progress>
 ```
 
+### `HS0046`. `<meter>` element must have `value` and `max` attributes (`<meter>`元素必须包含`value`和`max`属性)
+
+```html
+<meter value="22" min="0", max="100">22</meter>
+```
+
 ## Accessibility (可用性)
 
 ### `HA0001`. `<img>` element must have `alt` atrribute (`<img>`标签必须包含`alt`属性)
