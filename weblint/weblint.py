@@ -36,8 +36,8 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
 
     DEPRECATED_TAGS = {
         'font', 'center', 's', 'strike', 'b', 'i', 'tt', 'small', 'frame',
-        'acronym', 'big', 'u', 'isindex', 'basefont', 'dir', 'applet',
-        'style',
+        'frameset', 'noframes', 'acronym', 'big', 'u', 'isindex', 'basefont',
+        'dir', 'applet', 'style',
     }
 
     REQUIRED_TAGS = {
@@ -89,7 +89,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'data', 'datalist', 'dd', 'del', 'details', 'dfn', 'dialog', 'div',
             'dl', 'dt',
         'em',
-        'fieldset', 'figure', 'figcaption', 'footer', 'form', 'frameset',
+        'fieldset', 'figure', 'figcaption', 'footer', 'form',
         'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'header', 'hgroup', 'html',
         'ins',
         'kbd',
@@ -112,7 +112,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'style', 'manifest', 'xmlns', 'align', 'alink', 'link', 'vlink',
         'text', 'background', 'bgcolor', 'border', 'char', 'charoff',
         'compact', 'frame', 'frameborder', 'hspace', 'nowrap', 'rules',
-        'value', 'valign', 'accept', 'vspace', 'noframes'
+        'value', 'valign', 'accept', 'vspace',
     }
 
     GLOBAL_ATTRS = {
