@@ -24,7 +24,7 @@ class WebLintTests(unittest.TestCase):
             expected = set()
             for e, l, o in zip(exxx, lineno, obj):
                 expected.add(weblint.Report(e, path, l, o))
-        self.assertSetEqual(weblint.htmlparser(path), expected)
+        self.assertSetEqual(weblint.weblint(path), expected)
 
     def testG00001(self):
         self._test('not_exist_file', 'G00001', 0, '')
