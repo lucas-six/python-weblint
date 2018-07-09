@@ -75,6 +75,9 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
         'aside': (
             (('main', '==', 0), 'HA0006'),
         ),
+        'figure': (
+            (('figcaption', '==', 1), 'HS0044'),
+        ),
     }
 
     SELFCLOSED_TAGS = {
@@ -367,6 +370,11 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
     return reports
 
 
+def csslint(path: pathlib.Path) -> set:
+    '''CSS Lint, a wrapper of csslint in npm.'''
+    return set()
+
+
 def main():
     parser = argparse.ArgumentParser(description='WebLint: The Web Code Quality Tool')
     parser.add_argument('source', metavar='F', type=str, nargs='+',
@@ -407,7 +415,7 @@ def _weblint_onefile(path: pathlib.Path) -> set:
     if suffix == '.html':
         return htmlparser(path)
     elif suffix == '.css':
-        raise NotImplementedError
+        return csslint(path)
     elif suffix == '.js':
         raise NotImplementedError
 
