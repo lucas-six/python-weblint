@@ -470,6 +470,15 @@ Example as below (示例如下)：
 <script src="js/js.js" type="text/javascript"></script>
 ```
 
+### `HS0044`. `<figure>` element must have child of `<figcaption>` element (`<figure>`元素必须包含`<figcaption>`子元素)
+
+```html
+<figure>
+  <img src="fig.png" alt="The Pulpit Rock"/>
+  <figcaption>Fig1. - The Figure Picture.</figcaption>
+</figure>
+```
+
 ## Accessibility (可用性)
 
 ### `HA0001`. `<img>` element must have `alt` atrribute (`<img>`标签必须包含`alt`属性)

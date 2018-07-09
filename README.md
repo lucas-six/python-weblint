@@ -73,6 +73,7 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 - **HS0041**. `<link>` element must **NOT** have `type` attribute with value of `text/css` (`<link>`元素不可包含属性值为`text/css`的`type`属性)
 - **HS0042**. `<script>` element must have `src` attribute (`<script>`元素必须包含`src`属性)
 - **HS0043**. `<script>` element must **NOT** have `type` attribute with value of `text/javascript` (`<script>`元素不可包含属性值为`text/javascript`的`type`属性)
+- **HS0044**. `<figure>` element must have child of `<figcaption>` element (`<figure>`元素必须包含`<figcaption>`子元素)
 
 #### Accessibility (可用性)
 
