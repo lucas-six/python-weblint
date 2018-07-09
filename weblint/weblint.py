@@ -146,6 +146,7 @@ def htmlparser(path: pathlib.Path, doctype: str ='DOCTYPE html') -> set:
 
     REQUIRED_ATTRS_ACCESS = {
         'img': (('alt',), 'HA0001'),
+        'a': (('title',), 'HA0007'),
     }
 
     NOEMPTY_TAGS = {

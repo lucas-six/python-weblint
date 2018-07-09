@@ -200,6 +200,9 @@ class WebLintTests(unittest.TestCase):
     def test_HA0006(self):
         self._test('tests/HA0006.html', 'HA0006', 8, 'main')
 
+    def test_HA0007(self):
+        self._test('tests/HA0007.html', 'HA0007', 8, 'title')
+
     def test_HP0001(self):
         self._test('tests/HP0001.html', 'HP0001', 3, 'script')
 
