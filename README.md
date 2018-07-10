@@ -98,49 +98,49 @@ Refer to [CSSLint Rules](https://github.com/CSSLint/csslint/wiki/Rules)
 
 #### Possible Errors (潜在错误)
 
-- `box-model`
-- `display-property-grouping`
-- `duplicate-properties`
-- `empty-rules`
-- `known-properties`
+- **CS0001**. `box-model`
+- **CS0002**. `display-property-grouping`
+- **CS0003**. `duplicate-properties`
+- **CS0004**. `empty-rules`
+- **CS0005**. `known-properties`
 
 #### Compatibility (兼容性)
 
-- `adjoining-classes`
-- `box-sizing`
-- `compatible-vendor-prefixes`
+- **CS0006**. `adjoining-classes`
+- **CS0007**. `box-sizing`
+- **CS0008**. `compatible-vendor-prefixes`
 - ~~`gradients`~~
-- `text-indent`
-- `vendor-prefix`
+- **CS0009**. `text-indent`
+- **CS0010**. `vendor-prefix`
 - ~~`fallback-colors`~~
-- `star-property-hack`
-- `underscore-property-hack`
-- `bulletproof-font-face`
+- **CS0011**. `star-property-hack`
+- **CS0012**. `underscore-property-hack`
+- **CS0013**. `bulletproof-font-face`
 
 #### Performance  (性能)
 
-- `font-faces`
-- `import`
-- `regex-selectors`
-- `universal-selector`
-- `unqualified-attributes`
-- `zero-units`
-- `overqualified-elements`
-- `shorthand`
-- `duplicate-background-images`
+- **CP0001**. `font-faces`
+- **CP0002**. `import`
+- **CP0003**. `regex-selectors`
+- **CP0004**. `universal-selector`
+- **CP0005**. `unqualified-attributes`
+- **CP0006**. `zero-units`
+- **CP0007**.`overqualified-elements`
+- **CP0008**. `shorthand`
+- **CP0009**. `duplicate-background-images`
 
 ### Maintainability & Duplication (可维护性)
 
-- `floats`
-- `font-sizes`
-- `ids`
-- `important`
+- **CS0014**. `floats`
+- **CS0015**. `font-sizes`
+- **CS0016**. `ids`
+- **CS0017**. `important`
 
 ### Accessibility (可访问性)
 
-- `outline-none`
+- **CA0001**. `outline-none`
 
 ### OOCSS
 
-- `qualified-headings`
-- `unique-headings`
+- **CS0018**. `qualified-headings`
+- **CS0019**. `unique-headings`
