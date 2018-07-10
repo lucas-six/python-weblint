@@ -91,3 +91,56 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 #### Performance (性能)
 
 - **HP0001**. `<script>` element must **NOT** used in `<head>` element (`<script>元素不可用于<head>元素内`)
+
+### CSS
+
+Refer to [CSSLint Rules](https://github.com/CSSLint/csslint/wiki/Rules)
+
+#### Possible Errors (潜在错误)
+
+- `box-model`
+- `display-property-grouping`
+- `duplicate-properties`
+- `empty-rules`
+- `known-properties`
+
+#### Compatibility (兼容性)
+
+- `adjoining-classes`
+- `box-sizing`
+- `compatible-vendor-prefixes`
+- ~~`gradients`~~
+- `text-indent`
+- `vendor-prefix`
+- ~~`fallback-colors`~~
+- `star-property-hack`
+- `underscore-property-hack`
+- `bulletproof-font-face`
+
+#### Performance  (性能)
+
+- `font-faces`
+- `import`
+- `regex-selectors`
+- `universal-selector`
+- `unqualified-attributes`
+- `zero-units`
+- `overqualified-elements`
+- `shorthand`
+- `duplicate-background-images`
+
+### Maintainability & Duplication (可维护性)
+
+- `floats`
+- `font-sizes`
+- `ids`
+- `important`
+
+### Accessibility (可访问性)
+
+- `outline-none`
+
+### OOCSS
+
+- `qualified-headings`
+- `unique-headings`
