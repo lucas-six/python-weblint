@@ -79,6 +79,12 @@ Paired Tags (成对标签)：
 <html>, <body>, <title>, <p>, <div>, <h1>~<h6>, <abbr>, <address>, <bdi>, <bdo>, <blockquote>, <cite>, <del>, <dfn>, <em>, <ins>, <kbd>, <meter>, <progress>, <rb>, <rtc>, <rp>, <rt>, <ruby>, <time>, <datalist>, <canvas>, <figcaption>, <figure>, <audio>, <source>, <video>, <nav>, <header>, <footer>, <section>, <article>, <aside>, <details>, <dialog>, <pre>, <q>, <samp>, <strong>, <sup>, <sub>, <var>, <form>, <textarea>, <button>, <select>, <option>, <optgroup>, <label>, <fieldset>, <legend>, <map>, <a>, <ul>, <ol>, <li>, <dl>, <dt>, <dd>, <menu>, <menuitem>, <span>, <head>, <script>, <noscript>, <object>, <table>, <th>, <td>, <tr>, <tbody>, <thead>, <tfoot>, <caption>, <col>, <colgroup>, <main>, <picture>, <template>, <data>, <code>, <summary>
 ```
 
+SVG
+
+```html
+<svg>, <defs>, <title>, <mask>, <lineargradient>, <stop>, <rect>, <path>, <g>, <polygon>
+```
+
 Right(正确)：
 
 ```html
@@ -316,15 +322,15 @@ Wrong(错误)：
 
 ### `HS0015`. `<head>` element must have child of `<title>` element (`<head>`标签必须包含`<title>`子元素)
 
-### `HS0016`. `<title>` element must **NOT** be empty (`<title>`元素不可为空)
+### `HS0016`. `<title>` element must NOT be empty (`<title>`元素不可为空)
 
-Right (正确):
+Right(正确)
 
 ```html
 <title>Page Title</title>
 ```
 
-Wrong (错误):
+Wrong(错误)
 
 ```html
 <title></title>
@@ -332,13 +338,13 @@ Wrong (错误):
 
 ### `HS0017`. `<p>` element must **NOT** be empty (`<p>`元素不可为空)
 
-Right (正确):
+Right(正确)
 
 ```html
 <p>Paragraph...</p>
 ```
 
-Wrong (错误):
+Wrong(错误)
 
 ```html
 <p></p>
@@ -490,6 +496,10 @@ Example as below (示例如下)：
 ```html
 <meter value="22" min="0", max="100">22</meter>
 ```
+
+### `HS0047`. `<svg>` element must have `version` and `xmlns` attributes (`<svg>`元素必须包含`version`和`xmlns`属性)
+
+### `HS0048`. `<path>` element must have `d` attribute (`<path>`元素必须包含`d`属性)
 
 ## Accessibility (可用性)
 

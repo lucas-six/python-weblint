@@ -128,6 +128,9 @@ def _weblint_html(path: pathlib.Path, doctype: str) -> set:
     SELFCLOSED_TAGS = {
         'area', 'base', 'br', 'embed', 'hr', 'iframe', 'input', 'img', 'keygen',
         'link', 'meta', 'output', 'param', 'track', 'wbr', 'source',
+
+        # SVG
+        'path', 'stop', 'rect', 'polygon',
     }
 
     CLOSE_TAGS = {
@@ -153,23 +156,36 @@ def _weblint_html(path: pathlib.Path, doctype: str) -> set:
         'table', 'textarea', 'tbody', 'td', 'template', 'th', 'thead', 'time',
             'title', 'tfoot', 'tr',
         'ul',
-        'var', 'video'
+        'var', 'video',
+
+        # SVG
+        'svg', 'title', 'defs', 'g', 'mask', 'lineargradient',
     }
 
     DEPRECATED_ATTRS = {
-        'style', 'manifest', 'xmlns', 'align', 'alink', 'link', 'vlink',
+        'manifest', 'align', 'alink', 'link', 'vlink',
         'text', 'background', 'bgcolor', 'border', 'char', 'charoff',
         'compact', 'frame', 'frameborder', 'hspace', 'nowrap', 'rules',
         'valign', 'accept', 'vspace',
+
+        # SVG
+        'xml:space',
     }
 
     GLOBAL_ATTRS = {
         'lang', 'id', 'class', 'title', 'hidden',
+
+        # SVG
+        'style',
     }
 
     VALID_ATTRS = {
         'charset', 'name', 'src', 'content', 'controls', 'type', 'href',
         'alt', 'rel', 'value', 'min', 'max',
+
+        # SVG
+        'xmlns', 'd', 'version', 'viewbox', 'width', 'height', 'offset',
+        'x1', 'y1', 'x', 'y', 'x2', 'y2', 'gradientunits', 'points',
     }
 
     BOOL_ATTRS = {
@@ -188,6 +204,8 @@ def _weblint_html(path: pathlib.Path, doctype: str) -> set:
         'script': (('src',), 'HS0042'),
         'progress': (('value', 'max'), 'HS0045'),
         'meter': (('value', 'min', 'max'), 'HS0046'),
+        'svg': (('version', 'xmlns'), 'HS0047'),
+        'path': (('d',), 'HS0048'),
     }
 
     REQUIRED_ATTRS_ACCESS = {
@@ -370,6 +388,8 @@ def _weblint_html(path: pathlib.Path, doctype: str) -> set:
     for t in NOEMPTY_TAGS:
         for e in parser.find(t[0]):
             if not e.text:
+                if e.element.tag == 'a' and len(e.find()) > 1:
+                    continue
                 reports.add(Report(t[1], path, e.element.sourceline, e.element.tag))
 
     # `<h1>` element must be present only once
@@ -426,7 +446,7 @@ def _weblint_css(path: pathlib.Path) -> set:
 
 
 def _weblint_js(path: pathlib.Path) -> set:
-    raise NotImplementedError
+    return set()
 
 
 if __name__ == '__main__':

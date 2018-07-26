@@ -6,10 +6,20 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 
 ## Features（特性）
 
-- Code Quality Verification (代码质量验证)
-  - HTML
-- Command Line Options (命令行选项)
-  - `source` (required)(必选项): source files (源文件)
+- Code Static Analysis (代码静态分析)
+  - HTML / SVG
+    - more powerful and more stringent than `htmlhint`
+    - support semantic ranking
+
+## Usage (用法)
+
+```bash
+weblint <source>
+```
+
+### Command Line Options (命令行选项)
+
+- `source` (required)(必选项): source files (源文件)
 
 ## Code Rules（代码规则）
 
@@ -76,6 +86,8 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 - **HS0044**. `<figure>` element must have child of `<figcaption>` element (`<figure>`元素必须包含`<figcaption>`子元素)
 - **HS0045**. `<progress>` element must have `value` and `max` attributes (`<progress>`元素必须包含`value`和`max`属性)
 - **HS0046**. `<meter>` element must have `value` and `max` attributes (`<meter>`元素必须包含`value`和`max`属性)
+- **HS0047**. `<svg>` element must have `version` and `xmlns` attributes (`<svg>`元素必须包含`version`和`xmlns`属性)
+- **HS0048**. `<path>` element must have `d` attribute (`<path>`元素必须包含`d`属性)
 
 #### Accessibility (可用性)
 
@@ -94,7 +106,7 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 
 ### CSS
 
-Refer to [CSSLint Rules](https://github.com/CSSLint/csslint/wiki/Rules)
+Refer to [StyleLint Rules](https://github.com/CSSLint/csslint/wiki/Rules)
 
 #### Possible Errors (潜在错误)
 
