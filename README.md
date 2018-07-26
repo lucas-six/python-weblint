@@ -7,11 +7,16 @@ The Web Code Quality Tool, including both **front-end** (HTML, CSS, JavaScript) 
 ## Features（特性）
 
 - Code Static Analysis (代码静态分析)
-  - HTML / SVG
+  - HTML 5 / SVG 1.1
     - more powerful and more stringent than `htmlhint`
     - support semantic ranking
 
 ## Usage (用法)
+
+```bash
+sudo npm install -g stylelint
+sudo npm install stylelint-config-recommended
+```
 
 ```bash
 weblint <source>
@@ -106,7 +111,7 @@ weblint <source>
 
 ### CSS
 
-Refer to [StyleLint Rules](https://github.com/CSSLint/csslint/wiki/Rules)
+Refer to [StyleLint Rules](https://stylelint.io/user-guide/rules/)
 
 #### Possible Errors (潜在错误)
 
