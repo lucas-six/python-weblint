@@ -91,7 +91,7 @@ weblint <source>
 - **HS0044**. `<figure>` element must have child of `<figcaption>` element (`<figure>`元素必须包含`<figcaption>`子元素)
 - **HS0045**. `<progress>` element must have `value` and `max` attributes (`<progress>`元素必须包含`value`和`max`属性)
 - **HS0046**. `<meter>` element must have `value` and `max` attributes (`<meter>`元素必须包含`value`和`max`属性)
-- **HS0047**. `<svg>` element must have `version` and `xmlns` attributes (`<svg>`元素必须包含`version`和`xmlns`属性)
+- **HS0047**. `<svg>` element must have `version` attribute (`<svg>`元素必须包含`version`属性)
 - **HS0048**. `<path>` element must have `d` attribute (`<path>`元素必须包含`d`属性)
 
 #### Accessibility (可用性)

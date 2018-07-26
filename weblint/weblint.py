@@ -163,7 +163,7 @@ def _weblint_html(path: pathlib.Path, doctype: str) -> set:
     }
 
     DEPRECATED_ATTRS = {
-        'manifest', 'align', 'alink', 'link', 'vlink',
+        'xmlns', 'manifest', 'align', 'alink', 'link', 'vlink',
         'text', 'background', 'bgcolor', 'border', 'char', 'charoff',
         'compact', 'frame', 'frameborder', 'hspace', 'nowrap', 'rules',
         'valign', 'accept', 'vspace',
@@ -184,7 +184,7 @@ def _weblint_html(path: pathlib.Path, doctype: str) -> set:
         'alt', 'rel', 'value', 'min', 'max',
 
         # SVG
-        'xmlns', 'd', 'version', 'viewbox', 'width', 'height', 'offset',
+        'd', 'version', 'viewbox', 'width', 'height', 'offset',
         'x1', 'y1', 'x', 'y', 'x2', 'y2', 'gradientunits', 'points',
     }
 
@@ -204,7 +204,7 @@ def _weblint_html(path: pathlib.Path, doctype: str) -> set:
         'script': (('src',), 'HS0042'),
         'progress': (('value', 'max'), 'HS0045'),
         'meter': (('value', 'min', 'max'), 'HS0046'),
-        'svg': (('version', 'xmlns'), 'HS0047'),
+        'svg': (('version',), 'HS0047'),
         'path': (('d',), 'HS0048'),
     }
 
